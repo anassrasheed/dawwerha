@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="68" height="88" viewBox="0 0 68 88">
+  <defs>
+    <filter id="Path_84574" x="0" y="0" width="68" height="88" filterUnits="userSpaceOnUse">
+      <feOffset dy="-10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feFlood flood-color="#b7b7b7" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="ic-menu" transform="translate(18 38)">
+    <g id="Group_162493" data-name="Group 162493" transform="translate(-192 -432)">
+      <g transform="matrix(1, 0, 0, 1, 174, 394)" filter="url(#Path_84574)">
+        <path id="Path_84574-2" data-name="Path 84574" d="M208,454a4,4,0,1,0,4,4A4,4,0,0,0,208,454Zm0-10a4,4,0,1,0,4,4A4,4,0,0,0,208,444Zm0-10a4,4,0,1,0,4,4A4,4,0,0,0,208,434Z" transform="translate(-174 -394)" fill="#bec1c3" fill-rule="evenodd"/>
+      </g>
+    </g>
+  </g>
+</svg>

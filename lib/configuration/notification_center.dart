@@ -1,0 +1,32 @@
+class NotificationCenterKeys {
+  static const String selectHome = 'SELECT_HOME';
+  static const String mseeages = 'MESSAGES';
+  static const String logout = 'LOGOUT';
+  static const String pushFullScreen = 'PUSH_FULL_SCREEN';
+  static const String popScreen = 'POP_SCREEN';
+  static const String pushReplacement = 'pushReplacement';
+  static const String pushAndRemoveUntil = 'pushAndRemoveUntil';
+  static const String popAll = 'POP_ALL';
+  static const String moveIndex = 'MOVE_INDEX';
+  static const String userLoggedIn = 'USER_LOGGED_IN';
+  static const String item = 'ITEM';
+  static const String recentItem = 'RECENT_ITEM';
+  static const String chatMessage = 'CHAT_MESSAGE';
+  static const String removeItem = 'REMOVE_ITEM';
+  static const String stopAllVoiceMessages = 'STOP_ALL_VOICE_MESSAGES';
+  static const String updateWithList = 'UPDATE_WISHLIST';
+  static const String errorReport = 'REPORT_REPORT';
+  static const String reloadMessages = 'RELOAD_MESSAGES';
+  static const String reloadExplore = 'RELOAD_EXPLORE';
+  static const String viewAllCategory = 'VIEW_ALL_CATEGORY';
+  static const String scrollToCategoryIndex = 'SCROLL_TO_CATEGORY_INDEX';
+  static const String relogin = 'RELOGIN';
+  static const String itemDelivered = 'ITEM_DELIVERED';
+  static const String itemCancel = 'ITEM_CANCEL';
+  static const String itemUpdated = 'ITEM_UPDATED';
+  static const String stopRecording = 'STOP_RECORDING';
+  static const String cancelRecording = 'CANCEL_RECORDING';
+  static const String updateProfile = 'UPDATE_PROFILE';
+  static const String familyMatched = 'FAMILY_MATCHED';
+  static const String statusBar = 'STATUS_BAR';
+}

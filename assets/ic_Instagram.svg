@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46">
+  <g id="Instagram" transform="translate(-202 -4107)">
+    <rect id="BG" width="46" height="46" rx="12" transform="translate(202 4107)" fill="#ebf5fa"/>
+    <g id="ic-instagram" transform="translate(-42 4)">
+      <g id="Rectangle_140274" data-name="Rectangle 140274" transform="translate(252 4111)" fill="none" stroke="#1d416f" stroke-width="1.5">
+        <rect width="30" height="30" rx="7" stroke="none"/>
+        <rect x="0.75" y="0.75" width="28.5" height="28.5" rx="6.25" fill="none"/>
+      </g>
+      <g id="Ellipse_1950" data-name="Ellipse 1950" transform="translate(260 4119)" fill="none" stroke="#1d416f" stroke-width="1.5">
+        <circle cx="7" cy="7" r="7" stroke="none"/>
+        <circle cx="7" cy="7" r="6.25" fill="none"/>
+      </g>
+      <circle id="Ellipse_1951" data-name="Ellipse 1951" cx="2" cy="2" r="2" transform="translate(274 4115)" fill="#1d416f"/>
+    </g>
+  </g>
+</svg>

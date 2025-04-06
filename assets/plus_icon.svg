@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="140" height="140" viewBox="0 0 140 140">
+  <defs>
+    <filter id="Button_BG" x="0" y="0" width="140" height="140" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feFlood flood-color="#ba68c8"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Scan_Qr_Code_action" data-name="Scan Qr Code action" transform="translate(-138 -670)">
+    <g transform="matrix(1, 0, 0, 1, 138, 670)" filter="url(#Button_BG)">
+      <circle id="Button_BG-2" data-name="Button BG" cx="40" cy="40" r="40" transform="translate(30 20)" fill="#ba68c8"/>
+    </g>
+    <circle id="Button_BG-3" data-name="Button BG" cx="36" cy="36" r="36" transform="translate(172 694)" fill="#ba68c8"/>
+    <g id="Icon_feather-plus" data-name="Icon feather-plus" transform="translate(188.24 710.34)">
+      <path id="Path_140" data-name="Path 140" d="M18,7.5V31.821" transform="translate(1.66 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <path id="Path_141" data-name="Path 141" d="M7.5,18H31.821" transform="translate(0 1.66)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    </g>
+  </g>
+</svg>
