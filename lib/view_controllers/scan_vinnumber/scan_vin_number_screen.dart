@@ -181,7 +181,6 @@ class _ScanVinNumberScreenState extends State<ScanVinNumberScreen> {
                                 fontWeight: FontWeight.bold,
                                 textColor: Colors.white,
                                 onPressed: () {
-                                  controller.getVinNumber();
                                 }),
                             SizedBox(
                               height: 20,

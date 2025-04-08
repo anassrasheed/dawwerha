@@ -257,7 +257,6 @@ class _HomeTabState extends State<HomeTab> {
       onTap: () {
         ScanVinNumberController controller = Get.put(ScanVinNumberController());
         controller.scanController.text = model.vehicleNumber;
-        controller.getVinNumber();
       },
       child: Container(
         //,BorderSide(color: AppColors().borderColor)

@@ -6,17 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:raff/configuration/app_colors.dart';
 import 'package:raff/generated/l10n.dart';
-import 'package:raff/utils/text_recognetion/vin_reader_manager.dart';
-import 'package:raff/utils/text_recognetion/vin_reader_model.dart';
 import 'package:raff/utils/ui/bottom_nav_bar/persistent-tab-view.dart';
 import 'package:raff/utils/ui/custom_text.dart';
-import 'package:raff/utils/ui/dialog_utils.dart';
 import 'package:raff/utils/ui/floating_action_bubble/floating_action_bubble.dart';
-import 'package:raff/utils/ui/progress_hud.dart';
 import 'package:raff/view_controllers/home/controller/home_tab_controller.dart';
 import 'package:raff/view_controllers/home/model/camera_manager.dart';
 import 'package:raff/view_controllers/home/view/tabs/home/home_tab.dart';
@@ -24,7 +19,6 @@ import 'package:raff/view_controllers/home/view/tabs/menu_tab.dart';
 import 'package:raff/view_controllers/scan_vinnumber/controller/scan_vinnumber_conroller.dart';
 import 'package:raff/view_controllers/scan_vinnumber/scan_vin_number_screen.dart';
 
-import 'live_vin_scanner.dart';
 
 class BottomNavigationScreen extends StatefulWidget {
   const BottomNavigationScreen({super.key});
@@ -246,7 +240,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen>
           titleStyle: TextStyle(fontSize: 16, color: Colors.white),
           onPress: () async {
             changeOverlay(isForward: false);
-            await _liveScan();
+
           },
         ),
         //Floating action menu item
@@ -282,108 +276,14 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen>
     );
   }
 
-  Future<void> _liveScan() async {
-    var detectedVins = await Get.to(() => LiveVinScanner());
-    if (detectedVins != null && detectedVins is List<String>) {
-      try {
-        await Future.delayed(Duration(milliseconds: 500));
-        if (detectedVins.length == 1) {
-          pushNewScreen(context,
-              screen: ScanVinNumberScreen(
-                vin: detectedVins.first,
-                onRescan: () {
-                  Get.back();
-                  _liveScan();
-                },
-              )).then((value) {
-            controller.getHistoryVehicle();
-          });
-        } else if (detectedVins.length > 1) {
-          showMultiVinBottomSheet(detectedVins);
-        }
-      } catch (_) {
-        DialogUtils.showToastView(context, S.of(context).generalError,
-            type: DialogType.error);
-      }
-    }
-   await Future.delayed(Duration(milliseconds: 700));
-    CameraManager().initalizeController();
-  }
 
   Future<void> _pickImageFromGallery() async {
     final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       File image = File(pickedFile.path);
-      _processImageForVin(image);
     }
   }
 
-  Future<void> _processImageForVin(File? image) async {
-    if (image == null) return;
-    try {
-      ProgressHud.shared.startLoading(context);
-      final inputImage = InputImage.fromFile(image);
-      final RecognizedText recognisedText =
-          await TextRecognizer().processImage(inputImage);
-
-      List<VinReaderModel> detectedVins =
-          VinReaderManager().detectVins(recognisedText, isLiveScan: false);
-
-      ProgressHud.shared.stopLoading();
-      if (detectedVins
-              .where((element) => element.isBackup == false)
-              .toList()
-              .length ==
-          1) {
-        pushNewScreen(context,
-            screen: ScanVinNumberScreen(
-              vin: detectedVins
-                  .where((element) => element.isBackup == false)
-                  .toList()
-                  .first
-                  .vin,
-              onRescan: () {
-                Get.back();
-                _pickImageFromGallery();
-              },
-            )).then((value) {
-          controller.getHistoryVehicle();
-        });
-      } else if (detectedVins
-              .where((element) => element.isBackup == false)
-              .toList()
-              .length >
-          1) {
-        showMultiVinBottomSheet(detectedVins
-            .where((element) => element.isBackup == false)
-            .map((e) => e.vin)
-            .toList());
-      } else {
-        if (detectedVins.where((element) => element.isBackup).isEmpty) {
-          DialogUtils.showToastView(
-              context, S.of(context).noVinDetectedFromTheImage,
-              type: DialogType.warning);
-          return;
-        }
-        DialogUtils.showDialogWithButtons(
-            title: S.of(context).warning,
-            message: S.of(context).weDetectedTextButNoneMatchTheVinFormatWould,
-            context: context,
-            positiveButtonTitle: S.of(context).view,
-            negativeButtonTitle: S.of(context).cancel,
-            onTap: () {
-              showViewBottomSheet(detectedVins
-                  .where((element) => element.isBackup)
-                  .map((e) => e.vin)
-                  .toList());
-            });
-      }
-    } catch (_) {
-      ProgressHud.shared.stopLoading();
-      DialogUtils.showToastView(context, S.of(context).generalError,
-          type: DialogType.error);
-    }
-  }
 
   void showViewBottomSheet(List<String> blocks) {
     showModalBottomSheet(
@@ -541,7 +441,6 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen>
                         Get.back();
                         ScanVinNumberController controller =
                             Get.put(ScanVinNumberController());
-                        controller.getVinNumber(nVin: vins[index]);
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(
