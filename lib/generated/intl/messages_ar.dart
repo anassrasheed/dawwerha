@@ -20,176 +20,181 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
-  static String m0(year) => "© ${year} VINSweep. All Rights Reserved";
+  static String m0(year) => "© ${year} VINSweep. جميع الحقوق محفوظة";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "aboutUs": MessageLookupByLibrary.simpleMessage("About Us"),
-        "back": MessageLookupByLibrary.simpleMessage("Back"),
-        "callUs": MessageLookupByLibrary.simpleMessage("Call Us"),
-        "camera": MessageLookupByLibrary.simpleMessage("Camera"),
+        "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+        "back": MessageLookupByLibrary.simpleMessage("عودة"),
+        "callUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
+        "camera": MessageLookupByLibrary.simpleMessage("الكاميرا"),
         "cameraPermissionIsRequired": MessageLookupByLibrary.simpleMessage(
-            "Camera permission is required"),
-        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-        "change": MessageLookupByLibrary.simpleMessage("Change"),
+            "يتطلب إذن الوصول إلى الكاميرا"),
+        "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+        "change": MessageLookupByLibrary.simpleMessage("تغيير"),
         "changePassword":
-            MessageLookupByLibrary.simpleMessage("Change Password"),
-        "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+            MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
+        "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "confirmPassword":
-            MessageLookupByLibrary.simpleMessage("Confirm Password"),
-        "contactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
+            MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+        "contactUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
         "copyRight": m0,
-        "createYourAccount":
-            MessageLookupByLibrary.simpleMessage("Create Your Account"),
+        "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
         "currentPassword":
-            MessageLookupByLibrary.simpleMessage("Current Password"),
-        "deactivate": MessageLookupByLibrary.simpleMessage("Deactivate"),
-        "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
+            MessageLookupByLibrary.simpleMessage("كلمة المرور الحالية"),
+        "deactivate": MessageLookupByLibrary.simpleMessage("تعطيل"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
         "deleteMessage": MessageLookupByLibrary.simpleMessage(
-            "By clicking confirm, recovery of your account and associated data will not be possible. This action will permanently delete all your data and account history."),
-        "detectedTexts": MessageLookupByLibrary.simpleMessage("Detected Texts"),
-        "detectedVins": MessageLookupByLibrary.simpleMessage("Detected VINs"),
-        "dismiss": MessageLookupByLibrary.simpleMessage("Dismiss"),
-        "done": MessageLookupByLibrary.simpleMessage("Done"),
-        "email": MessageLookupByLibrary.simpleMessage("Email"),
-        "enter": MessageLookupByLibrary.simpleMessage("Enter"),
-        "enterOtp": MessageLookupByLibrary.simpleMessage("Enter OTP"),
+            "بالنقر على تأكيد، لن تتمكن من استعادة حسابك أو بياناتك المرتبطة به. سيتم حذف كل شيء بشكل نهائي."),
+        "detectedTexts":
+            MessageLookupByLibrary.simpleMessage("النصوص المكتشفة"),
+        "detectedVins":
+            MessageLookupByLibrary.simpleMessage("أرقام VIN المكتشفة"),
+        "dismiss": MessageLookupByLibrary.simpleMessage("إغلاق"),
+        "done": MessageLookupByLibrary.simpleMessage("تم"),
+        "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+        "enter": MessageLookupByLibrary.simpleMessage("إدخال"),
+        "enterOtp": MessageLookupByLibrary.simpleMessage("أدخل رمز التحقق"),
         "enterTheOtpCodeSentToTheRegisteredEmailAddress":
             MessageLookupByLibrary.simpleMessage(
-                "Enter the OTP code sent to the registered email address"),
+                "أدخل رمز التحقق المرسل إلى البريد الإلكتروني المسجل"),
         "enterTheOtpCodeSentToYourEmailAddress":
             MessageLookupByLibrary.simpleMessage(
-                "Enter the OTP code sent to your email address"),
+                "أدخل رمز التحقق المرسل إلى بريدك الإلكتروني"),
         "forgotPassword":
-            MessageLookupByLibrary.simpleMessage("Forgot Password"),
-        "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
+            MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+        "gallery": MessageLookupByLibrary.simpleMessage("المعرض"),
         "generalError": MessageLookupByLibrary.simpleMessage(
-            "Something went wrong, try again later"),
-        "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
-        "home": MessageLookupByLibrary.simpleMessage("Home"),
+            "حدث خطأ ما، يرجى المحاولة لاحقاً"),
+        "getStarted": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
+        "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
         "informationNotAvailable":
-            MessageLookupByLibrary.simpleMessage("Information not available"),
+            MessageLookupByLibrary.simpleMessage("المعلومة غير متوفرة"),
         "invalidOtpValue":
-            MessageLookupByLibrary.simpleMessage("Invalid OTP Code"),
-        "latestScans": MessageLookupByLibrary.simpleMessage("Latest Scans"),
-        "login": MessageLookupByLibrary.simpleMessage("Login"),
-        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
-        "menu": MessageLookupByLibrary.simpleMessage("Menu"),
+            MessageLookupByLibrary.simpleMessage("رمز التحقق غير صحيح"),
+        "latestScans":
+            MessageLookupByLibrary.simpleMessage("أحدث عمليات المسح"),
+        "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "menu": MessageLookupByLibrary.simpleMessage("القائمة"),
         "multipleVinsDetectedPleaseSelectOneToPreviewVehicleData":
             MessageLookupByLibrary.simpleMessage(
-                "Multiple VINs detected. Please select one to view vehicle information"),
-        "name": MessageLookupByLibrary.simpleMessage("Name"),
-        "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
+                "تم اكتشاف عدة أرقام VIN. يرجى اختيار أحدها لعرض معلومات المركبة"),
+        "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+        "newPassword":
+            MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
         "newPasswordMustBeDifferentFromTheCurrentPassword":
             MessageLookupByLibrary.simpleMessage(
-                "New password must be different from the current password"),
-        "next": MessageLookupByLibrary.simpleMessage("Next"),
-        "noScansYet": MessageLookupByLibrary.simpleMessage("No Scans Yet"),
+                "يجب أن تكون كلمة المرور الجديدة مختلفة عن الحالية"),
+        "next": MessageLookupByLibrary.simpleMessage("التالي"),
+        "noScansYet":
+            MessageLookupByLibrary.simpleMessage("لا توجد عمليات مسح بعد"),
         "noVinDetectedFromTheImage":
-            MessageLookupByLibrary.simpleMessage("No VIN Detected"),
-        "ok": MessageLookupByLibrary.simpleMessage("OK"),
+            MessageLookupByLibrary.simpleMessage("لم يتم الكشف عن رقم VIN"),
+        "ok": MessageLookupByLibrary.simpleMessage("حسناً"),
         "oneTimePinIsRequired":
-            MessageLookupByLibrary.simpleMessage("One Time Pin is required"),
-        "openSettings": MessageLookupByLibrary.simpleMessage("Open Settings"),
-        "password": MessageLookupByLibrary.simpleMessage("Password"),
+            MessageLookupByLibrary.simpleMessage("رمز التحقق مطلوب"),
+        "openSettings": MessageLookupByLibrary.simpleMessage("فتح الإعدادات"),
+        "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordMustBeAtLeast6Character": MessageLookupByLibrary.simpleMessage(
-            "Password must be at least 6 characters"),
+            "يجب أن تكون كلمة المرور 6 أحرف على الأقل"),
         "pleaseEnsureThatThePasswordAndConfirmPasswordFieldsMatch":
-            MessageLookupByLibrary.simpleMessage("Passwords don\'t match"),
+            MessageLookupByLibrary.simpleMessage("كلمتا المرور غير متطابقتين"),
         "pleaseEnterCorrectName":
-            MessageLookupByLibrary.simpleMessage("Please enter correct name"),
-        "pleaseEnterValidEmail":
-            MessageLookupByLibrary.simpleMessage("Please enter valid email"),
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال اسم صحيح"),
+        "pleaseEnterValidEmail": MessageLookupByLibrary.simpleMessage(
+            "يرجى إدخال بريد إلكتروني صحيح"),
         "pleaseEnterYourCredentialsBelow": MessageLookupByLibrary.simpleMessage(
-            "Please enter your credentials below"),
+            "يرجى إدخال بيانات الدخول أدناه"),
         "pleaseEnterYourCurrentPasswordAndNewPassword":
             MessageLookupByLibrary.simpleMessage(
-                "Please enter your current password and new password"),
-        "pleaseFillCorrectVinNumber": MessageLookupByLibrary.simpleMessage(
-            "Please enter correct VIN number"),
-        "pleaseFillCorrectZipcode": MessageLookupByLibrary.simpleMessage(
-            "Please enter correct zip code"),
+                "يرجى إدخال كلمة المرور الحالية والجديدة"),
+        "pleaseFillCorrectVinNumber":
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال رقم VIN صحيح"),
+        "pleaseFillCorrectZipcode":
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال رمز بريدي صحيح"),
         "pleaseFillInYourInformationBelowToResetYourPassword":
             MessageLookupByLibrary.simpleMessage(
-                "Please enter your information below to reset your password"),
+                "يرجى إدخال معلوماتك لإعادة تعيين كلمة المرور"),
         "pleaseFillVinNumber":
-            MessageLookupByLibrary.simpleMessage("Please Enter VIN Number"),
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال رقم VIN"),
         "pleaseFillYourCountryZipcode": MessageLookupByLibrary.simpleMessage(
-            "Please enter your area zip code"),
+            "يرجى إدخال الرمز البريدي لمنطقتك"),
         "pleaseFillYourEmail":
-            MessageLookupByLibrary.simpleMessage("Please enter your email"),
-        "pleaseFillYourInformationBelow": MessageLookupByLibrary.simpleMessage(
-            "Please enter your information below"),
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال بريدك الإلكتروني"),
+        "pleaseFillYourInformationBelow":
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال معلوماتك أدناه"),
         "pleaseFillYourName":
-            MessageLookupByLibrary.simpleMessage("Please enter your full name"),
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال اسمك الكامل"),
         "pleaseFillYourPassword":
-            MessageLookupByLibrary.simpleMessage("Please enter your password"),
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال كلمة المرور"),
         "pleaseGrantLocationPermissionFromTheAppSettingsToRetrieve":
             MessageLookupByLibrary.simpleMessage(
-                "Please grant Location permission from the App Settings to retrieve the zip code."),
+                "يرجى منح إذن الموقع من إعدادات التطبيق لاسترجاع الرمز البريدي."),
         "pleaseSelectTheMostRelevantTextToEdit":
             MessageLookupByLibrary.simpleMessage(
-                "Please select the closest match to edit"),
+                "يرجى اختيار النص الأقرب للتعديل"),
         "pleaseSelectTheSuitableWayForYouToReachUs":
             MessageLookupByLibrary.simpleMessage(
-                "Please select the suitable way for you to reach us"),
+                "يرجى اختيار الطريقة الأنسب للتواصل معنا"),
         "plsReEnterOtp": MessageLookupByLibrary.simpleMessage(
-            "Please enter the OTP code received again"),
-        "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
-        "register": MessageLookupByLibrary.simpleMessage("Register"),
-        "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
-        "rescan": MessageLookupByLibrary.simpleMessage("Re-Scan"),
-        "resendCode": MessageLookupByLibrary.simpleMessage("Resend Code"),
-        "resendConfirmationCodeIn":
-            MessageLookupByLibrary.simpleMessage("Resend Confirmation Code in"),
+            "يرجى إدخال رمز التحقق مرة أخرى"),
+        "privacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
+        "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+        "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
+        "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
+        "rescan": MessageLookupByLibrary.simpleMessage("إعادة المسح"),
+        "resendCode": MessageLookupByLibrary.simpleMessage("إعادة إرسال الرمز"),
+        "resendConfirmationCodeIn": MessageLookupByLibrary.simpleMessage(
+            "إعادة إرسال رمز التأكيد خلال"),
         "resendVerificationCode":
-            MessageLookupByLibrary.simpleMessage("Resend Confirmation Code"),
-        "retypeNewPassword":
-            MessageLookupByLibrary.simpleMessage("Re-Type New Password"),
-        "save": MessageLookupByLibrary.simpleMessage("Save"),
-        "scan": MessageLookupByLibrary.simpleMessage("Scan"),
+            MessageLookupByLibrary.simpleMessage("إعادة إرسال رمز التأكيد"),
+        "retypeNewPassword": MessageLookupByLibrary.simpleMessage(
+            "أعد كتابة كلمة المرور الجديدة"),
+        "save": MessageLookupByLibrary.simpleMessage("حفظ"),
+        "scan": MessageLookupByLibrary.simpleMessage("مسح"),
         "scanVehicleVinNumber":
-            MessageLookupByLibrary.simpleMessage("Scan Vehicle VIN Number"),
+            MessageLookupByLibrary.simpleMessage("مسح رقم تعريف المركبة (VIN)"),
         "scanYourVehicleVinNumberThroughTheCamera":
             MessageLookupByLibrary.simpleMessage(
-                "Scan your vehicle VIN number using camera"),
+                "قم بمسح رقم VIN الخاص بمركبتك باستخدام الكاميرا"),
         "scannedVinNumber":
-            MessageLookupByLibrary.simpleMessage("Scanned VIN Number"),
-        "search": MessageLookupByLibrary.simpleMessage("Search"),
-        "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
-        "skip": MessageLookupByLibrary.simpleMessage("Skip"),
-        "submit": MessageLookupByLibrary.simpleMessage("Submit"),
+            MessageLookupByLibrary.simpleMessage("رقم VIN الممسوح"),
+        "search": MessageLookupByLibrary.simpleMessage("بحث"),
+        "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
+        "submit": MessageLookupByLibrary.simpleMessage("إرسال"),
         "termsConditions":
-            MessageLookupByLibrary.simpleMessage("Terms & Conditions"),
+            MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
         "theListIsCurrentlyEmpty":
-            MessageLookupByLibrary.simpleMessage("The list is currently empty"),
+            MessageLookupByLibrary.simpleMessage("القائمة فارغة حالياً"),
         "thisFieldIsRequired":
-            MessageLookupByLibrary.simpleMessage("This field is required"),
-        "totalSweeps": MessageLookupByLibrary.simpleMessage("Total Sweeps"),
-        "update": MessageLookupByLibrary.simpleMessage("Update"),
-        "upload": MessageLookupByLibrary.simpleMessage("Upload"),
-        "view": MessageLookupByLibrary.simpleMessage("View"),
-        "warning": MessageLookupByLibrary.simpleMessage("Warning"),
+            MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
+        "totalSweeps":
+            MessageLookupByLibrary.simpleMessage("إجمالي عمليات المسح"),
+        "update": MessageLookupByLibrary.simpleMessage("تحديث"),
+        "upload": MessageLookupByLibrary.simpleMessage("رفع"),
+        "view": MessageLookupByLibrary.simpleMessage("عرض"),
+        "warning": MessageLookupByLibrary.simpleMessage("تحذير"),
         "weDetectedTextButNoneMatchTheVinFormatWould":
             MessageLookupByLibrary.simpleMessage(
-                "We detected text, but not in a VIN format. Would you like to view and edit the closest one?"),
-        "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
-        "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
+                "تم الكشف عن نص، لكنه لا يطابق تنسيق رقم VIN. هل ترغب في عرض النص الأقرب وتعديله؟"),
+        "welcome": MessageLookupByLibrary.simpleMessage("مرحباً"),
+        "whatsapp": MessageLookupByLibrary.simpleMessage("واتساب"),
         "youCanOnlyEditYourNameAndZipCode":
             MessageLookupByLibrary.simpleMessage(
-                "You can only edit your name and ZIP code"),
-        "youCreatedAnAccountSuccessfully": MessageLookupByLibrary.simpleMessage(
-            "You created an account successfully! 🎉"),
-        "yourPasswordChangedSuccessfully": MessageLookupByLibrary.simpleMessage(
-            "Your Password Was Changed Successfully"),
+                "يمكنك فقط تعديل الاسم والرمز البريدي"),
+        "youCreatedAnAccountSuccessfully":
+            MessageLookupByLibrary.simpleMessage("تم إنشاء الحساب بنجاح! 🎉"),
+        "yourPasswordChangedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("تم تغيير كلمة المرور بنجاح"),
         "yourPasswordResetSuccessfully": MessageLookupByLibrary.simpleMessage(
-            "Your Password Was Reset Successfully"),
-        "yourProfileUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
-            "Your Profile Was Updated Successfully"),
+            "تم إعادة تعيين كلمة المرور بنجاح"),
+        "yourProfileUpdatedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("تم تحديث الملف الشخصي بنجاح"),
         "yourSessionIsExpiredPleaseLoginAgain":
             MessageLookupByLibrary.simpleMessage(
-                "Your session is expired, please login again"),
-        "zipCode": MessageLookupByLibrary.simpleMessage("ZIP Code")
+                "انتهت صلاحية الجلسة، يرجى تسجيل الدخول مرة أخرى"),
+        "zipCode": MessageLookupByLibrary.simpleMessage("الرمز البريدي")
       };
 }

@@ -49,13 +49,10 @@ class ProgressHud {
           child: isLoadMore
               ? SpinKitRipple(color: color, size: size)
               : Container(
-                  margin: EdgeInsets.only(right: useScanLoading ? 0 : 20.w),
                   child: Lottie.asset(
-                      useScanLoading
-                          ? 'assets/scan_animation.json'
-                          : 'assets/loading.json',
+                    'assets/plastic_loading.json',
                       repeat: true,
-                      width: useScanLoading ? 45.w : 60.w),
+                      width:  25.w),
                 ));
 
   void startLoading(BuildContext context, {bool useScanLoading = false}) {

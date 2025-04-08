@@ -8,7 +8,7 @@ class AppLocale extends Model {
   static var shared = AppLocale._private();
   AppLocale._private();
   CurrentSession currentSession = CurrentSession();
-  Locale _appLocale = const Locale('en');
+  Locale _appLocale = const Locale('ar');
   factory AppLocale() => shared;
   Locale get appLocal => _appLocale;
 
