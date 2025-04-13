@@ -12,19 +12,16 @@ import '../../../generated/l10n.dart';
 
 class ProfileController extends GetxController {
   TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController zipCodeController = TextEditingController();
+  TextEditingController mobileController = TextEditingController();
   FocusNode nameNode = FocusNode();
-  FocusNode emailNode = FocusNode();
+  FocusNode mobileNode = FocusNode();
   FocusNode zipCodeNode = FocusNode();
-  RxString emailError = ''.obs;
+  RxString mobileError = ''.obs;
   RxString nameError = ''.obs;
-  RxString zipCodeError = ''.obs;
 
   void _clearErrorMessages() {
-    emailError.value = '';
+    mobileError.value = '';
     nameError.value = '';
-    zipCodeError.value = '';
   }
 
   @override
@@ -32,8 +29,7 @@ class ProfileController extends GetxController {
     UserModel model = CurrentSession().getUser()!;
 
     nameController.text = model.user!.fullName ?? '';
-    emailController.text = model.user!.email ?? '';
-    zipCodeController.text = model.user!.zipCode?.toString() ?? '';
+    mobileController.text = model.user!.phoneNumber ?? '';
     super.onReady();
   }
 
@@ -52,16 +48,7 @@ class ProfileController extends GetxController {
       nameError.value = S.of(Get.context!).pleaseFillYourName;
       return;
     }
-    if (zipCodeController.text.isEmpty) {
-      zipCodeError.value = S.of(Get.context!).pleaseFillYourCountryZipcode;
-      return;
-    }
 
-    if (zipCodeController.text.length < 3 ||
-        zipCodeController.text.length > 10) {
-      zipCodeError.value = S.of(Get.context!).pleaseFillCorrectZipcode;
-      return;
-    }
     _clearErrorMessages();
     _callUpdateApi();
   }
@@ -69,7 +56,7 @@ class ProfileController extends GetxController {
   Future<void> _callUpdateApi() async {
     ProfileRepository repository = ApiProfileRepository();
     Either<Failure, LoginResponse> result = await repository.updateProfile(
-        nameController.text.trim(), zipCodeController.text.trim());
+        nameController.text.trim());
 
     if (result.isLeft) {
       _showErrorDialog(result);

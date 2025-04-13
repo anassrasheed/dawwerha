@@ -66,14 +66,14 @@ class UserModel {
 class User {
   final int? id;
   final String? fullName;
-  final String? email;
+  final String? phoneNumber;
   final int? zipCode;
   final bool? mustChangePassword;
 
   User({
     this.id,
     this.fullName,
-    this.email,
+    this.phoneNumber,
     this.zipCode,
     this.mustChangePassword,
   });
@@ -85,7 +85,7 @@ class User {
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"],
         fullName: json["fullName"],
-        email: json["email"],
+        phoneNumber: json["phoneNumber"],
         zipCode: json["zipCode"],
         mustChangePassword: json["mustChangePassword"],
       );
@@ -93,7 +93,7 @@ class User {
   Map<String, dynamic> toJson() => {
         "id": id,
         "fullName": fullName,
-        "email": email,
+        "phoneNumber": phoneNumber,
         "zipCode": zipCode,
         "mustChangePassword": mustChangePassword,
       };

@@ -45,7 +45,7 @@
   "youCreatedAnAccountSuccessfully": "تم إنشاء الحساب بنجاح! 🎉",
   "done": "تم",
   "enterTheOtpCodeSentToYourEmailAddress": "أدخل رمز التحقق المرسل إلى بريدك الإلكتروني",
-  "copyRight": "© {year} VINSweep. جميع الحقوق محفوظة",
+  "copyRight": "© {year} مدرسة القصور المختلطة الأولى. جميع الحقوق محفوظة",
   "search": "بحث",
   "latestScans": "أحدث عمليات المسح",
   "totalSweeps": "إجمالي عمليات المسح",
@@ -71,7 +71,7 @@
   "pleaseEnterCorrectName": "يرجى إدخال اسم صحيح",
   "pleaseFillCorrectZipcode": "يرجى إدخال رمز بريدي صحيح",
   "menu": "القائمة",
-  "youCanOnlyEditYourNameAndZipCode": "يمكنك فقط تعديل الاسم والرمز البريدي",
+  "youCanOnlyEditYourNameAndZipCode": "يمكنك فقط تعديل الاسم",
   "profile": "الملف الشخصي",
   "pleaseSelectTheSuitableWayForYouToReachUs": "يرجى اختيار الطريقة الأنسب للتواصل معنا",
   "contactUs": "اتصل بنا",
@@ -101,5 +101,9 @@
   "multipleVinsDetectedPleaseSelectOneToPreviewVehicleData": "تم اكتشاف عدة أرقام VIN. يرجى اختيار أحدها لعرض معلومات المركبة",
   "pleaseGrantLocationPermissionFromTheAppSettingsToRetrieve": "يرجى منح إذن الموقع من إعدادات التطبيق لاسترجاع الرمز البريدي.",
   "openSettings": "فتح الإعدادات",
-  "update": "تحديث"
+  "update": "تحديث",
+  "mobileNumber": "رقم الهاتف",
+  "passwordShouldBeOnlyEnglishLetters": "يجب أن تتكون كلمة المرور من أحرف إنجليزية فقط",
+  "pleaseEnterValidMobileNumber": "الرجاء إدخال رقم الهاتف المحمول الصحيح",
+  "pleaseFillYourMobileNumber": "الرجاء إدخال رقم هاتفك المحمول"
 }

@@ -75,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "menu": MessageLookupByLibrary.simpleMessage("Menu"),
+        "mobileNumber": MessageLookupByLibrary.simpleMessage("Mobile Number"),
         "multipleVinsDetectedPleaseSelectOneToPreviewVehicleData":
             MessageLookupByLibrary.simpleMessage(
                 "Multiple VINs detected. Please select one to view vehicle information"),
@@ -94,12 +95,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordMustBeAtLeast6Character": MessageLookupByLibrary.simpleMessage(
             "Password must be at least 6 characters"),
+        "passwordShouldBeOnlyEnglishLetters":
+            MessageLookupByLibrary.simpleMessage(
+                "Password should be only english letters"),
         "pleaseEnsureThatThePasswordAndConfirmPasswordFieldsMatch":
             MessageLookupByLibrary.simpleMessage("Passwords don\'t match"),
         "pleaseEnterCorrectName":
             MessageLookupByLibrary.simpleMessage("Please enter correct name"),
         "pleaseEnterValidEmail":
             MessageLookupByLibrary.simpleMessage("Please enter valid email"),
+        "pleaseEnterValidMobileNumber": MessageLookupByLibrary.simpleMessage(
+            "Please enter valid mobile number"),
         "pleaseEnterYourCredentialsBelow": MessageLookupByLibrary.simpleMessage(
             "Please enter your credentials below"),
         "pleaseEnterYourCurrentPasswordAndNewPassword":
@@ -120,6 +126,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter your email"),
         "pleaseFillYourInformationBelow": MessageLookupByLibrary.simpleMessage(
             "Please enter your information below"),
+        "pleaseFillYourMobileNumber": MessageLookupByLibrary.simpleMessage(
+            "Please fill your mobile number"),
         "pleaseFillYourName":
             MessageLookupByLibrary.simpleMessage("Please enter your full name"),
         "pleaseFillYourPassword":
@@ -177,8 +185,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "youCanOnlyEditYourNameAndZipCode":
-            MessageLookupByLibrary.simpleMessage(
-                "You can only edit your name and ZIP code"),
+            MessageLookupByLibrary.simpleMessage("You can only edit your name"),
         "youCreatedAnAccountSuccessfully": MessageLookupByLibrary.simpleMessage(
             "You created an account successfully! 🎉"),
         "yourPasswordChangedSuccessfully": MessageLookupByLibrary.simpleMessage(

@@ -41,14 +41,12 @@ class RegisterView extends StatelessWidget with AuthCommonViews {
               focusNode: controller.nameNode,
             ),
             KeyboardActionsItem(
-              focusNode: controller.emailNode,
+              focusNode: controller.mobileNode,
             ),
             KeyboardActionsItem(
               focusNode: controller.passwordNode,
             ),
-            KeyboardActionsItem(
-              focusNode: controller.zipCodeNode,
-            ),
+
           ]),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,10 +101,10 @@ class RegisterView extends StatelessWidget with AuthCommonViews {
                       controller: controller.nameController,
                       errorText: controller.nameError.value,
                       keyboardType: TextInputType.name,
-                      hintText: "e.g: John Doe",
+                      hintText: "مثال: أنس رشيد",
                       inputAction: TextInputAction.next,
                       onSubmitted: (v) {
-                        controller.emailNode.requestFocus();
+                        controller.mobileNode.requestFocus();
                       },
                       prefixIcon: SvgPicture.asset('assets/ic-name.svg'))),
                   SizedBox(
@@ -115,16 +113,17 @@ class RegisterView extends StatelessWidget with AuthCommonViews {
                   Obx(
                     () => AppTextField.shared.createTextField(
                         context: context,
-                        focusNode: controller.emailNode,
-                        labelText: S.of(context).email,
-                        controller: controller.emailController,
-                        errorText: controller.emailError.value,
-                        keyboardType: TextInputType.emailAddress,
+                        focusNode: controller.mobileNode,
+                        labelText: S.of(context).mobileNumber,
+                        controller: controller.mobileController,
+                        errorText: controller.mobileError.value,
+                        keyboardType: TextInputType.phone,
+                        hintText: '079XXXXXXX',
                         inputAction: TextInputAction.next,
                         onSubmitted: (v) {
                           controller.passwordNode.requestFocus();
                         },
-                        prefixIcon: SvgPicture.asset('assets/ic-mail.svg')),
+                        prefixIcon: Icon(Icons.phone_outlined,color: Colors.grey.shade400,)),
                   ),
                   SizedBox(
                     height: 24,
@@ -138,32 +137,12 @@ class RegisterView extends StatelessWidget with AuthCommonViews {
                         errorText: controller.passwordError.value,
                         inputAction: TextInputAction.next,
                         onSubmitted: (v) {
-                          controller.zipCodeNode.requestFocus();
+                          FocusManager.instance.primaryFocus!.unfocus();
                         },
                         showPasswordEye: true,
                         prefixIcon:
                             SvgPicture.asset('assets/password_icon.svg'),
                         obscureText: true),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Obx(
-                    () => AppTextField.shared.createTextField(
-                        context: context,
-                        focusNode: controller.zipCodeNode,
-                        labelText: S.of(context).zipCode,
-                        controller: controller.zipCodeController,
-                        errorText: controller.zipCodeError.value,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly,
-                          LengthLimitingTextInputFormatter(10),
-                        ],
-                        prefixIcon: SvgPicture.asset('assets/ic-zip.svg'),
-                        onSubmitted: (v) {
-                          FocusManager.instance.primaryFocus!.unfocus();
-                        }),
                   ),
                   SizedBox(
                     height: 50,

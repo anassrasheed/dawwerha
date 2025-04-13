@@ -6,6 +6,7 @@ import 'package:raff/configuration/cache_keys.dart';
 import 'package:raff/configuration/configuration_keys.dart';
 import 'package:raff/configuration/current_session.dart';
 import 'package:raff/generated/l10n.dart';
+import 'package:raff/l10n/app_locale.dart';
 import 'package:raff/utils/config_manager/config_manager.dart';
 import 'package:raff/utils/helpers/secure_storage_helper.dart';
 import 'package:raff/utils/ui/custom_button.dart';
@@ -42,26 +43,30 @@ class _MenuTabState extends State<MenuTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      if (controller.showOverlay.value)
-        return Stack(
-          children: [
-            AbsorbPointer(
-              child: _buildScaffold(context),
-              absorbing: true,
-            ),
-            Positioned.fill(
-              child: IgnorePointer(
-                child: Container(
-                  color: Colors.black
-                      .withOpacity(0.80), // Adjust opacity to match screenshot
+    return Directionality(
+      textDirection:
+          AppLocale.shared.isArabic() ? TextDirection.rtl : TextDirection.ltr,
+      child: Obx(() {
+        if (controller.showOverlay.value)
+          return Stack(
+            children: [
+              AbsorbPointer(
+                child: _buildScaffold(context),
+                absorbing: true,
+              ),
+              Positioned.fill(
+                child: IgnorePointer(
+                  child: Container(
+                    color: Colors.black.withOpacity(
+                        0.80), // Adjust opacity to match screenshot
+                  ),
                 ),
               ),
-            ),
-          ],
-        );
-      return _buildScaffold(context);
-    });
+            ],
+          );
+        return _buildScaffold(context);
+      }),
+    );
   }
 
   Scaffold _buildScaffold(BuildContext context) {
@@ -248,11 +253,17 @@ class MenuTile extends StatelessWidget {
         fontWeight: FontWeight.normal,
       ),
       trailing: isExternal
-          ? SvgPicture.asset(
-              "assets/ic-link.svg",
+          ? RotatedBox(
+              quarterTurns: AppLocale.shared.isArabic() ? 3 : 0,
+              child: SvgPicture.asset(
+                "assets/ic-link.svg",
+              ),
             )
-          : SvgPicture.asset(
-              "assets/ic-arrow.svg",
+          : RotatedBox(
+              quarterTurns: AppLocale.shared.isArabic() ? 2 : 0,
+              child: SvgPicture.asset(
+                "assets/ic-arrow.svg",
+              ),
             ),
       onTap: onTap,
     );

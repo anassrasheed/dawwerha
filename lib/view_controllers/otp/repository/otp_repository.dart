@@ -9,29 +9,33 @@ import 'package:raff/business_managers/apis.dart';
 import 'package:raff/business_managers/http_wrapper/http_wrapper.dart';
 import 'package:raff/generated/l10n.dart';
 import 'package:raff/utils/helpers/encryption_helper.dart';
+import 'package:raff/utils/helpers/extensions.dart';
 
 enum OTPType { EMAIL_VERIFICATION, PASSWORD_RESET }
 
 abstract class OtpRepository {
   Future<Either<Failure, GenericResponse>> requestOtp(
-      String email, OTPType type,
+      String mobileNumber, OTPType type,
       {bool showLoading = true});
 
   Future<Either<Failure, VerifyOtpResponse>> verifyOtp(
-      String email, OTPType type, String otpCode,
+      String mobileNumber, OTPType type, String otpCode,
       {bool showLoading = true});
 }
 
 class ApiOtpRepository extends OtpRepository {
   @override
   Future<Either<Failure, GenericResponse>> requestOtp(
-      String email, OTPType type,
+      String mobileNumber, OTPType type,
       {bool showLoading = true}) async {
     var result = await HttpWrapper(
         context: Get.context!,
         url: Apis.generateCode,
-        showLoading: showLoading, // 79639
-        postParameters: {"email": email, "otpType": type.name}).post();
+        showLoading: showLoading,
+        postParameters: {
+          "phoneNumber": mobileNumber.generateValidMobileNumber(),
+          "otpType": type.name
+        }).post();
     if (result?.stringBody != null) {
       var body = json.decode(result!.stringBody!);
       if (body['code'] == 200) {
@@ -46,14 +50,14 @@ class ApiOtpRepository extends OtpRepository {
 
   @override
   Future<Either<Failure, VerifyOtpResponse>> verifyOtp(
-      String email, OTPType type, String otpCode,
+      String mobileNumber, OTPType type, String otpCode,
       {bool showLoading = true}) async {
     var result = await HttpWrapper(
         context: Get.context!,
         url: Apis.verifyCode,
         showLoading: showLoading,
         postParameters: {
-          "email": email,
+          "phoneNumber": mobileNumber.generateValidMobileNumber(),
           "otpType": type.name,
           'otpCode': EncryptionHelper().encryptValue(otpCode)
         }).post();

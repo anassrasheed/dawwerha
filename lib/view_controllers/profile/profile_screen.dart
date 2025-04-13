@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:raff/configuration/app_colors.dart';
+import 'package:raff/l10n/app_locale.dart';
 import 'package:raff/utils/ui/custom_button.dart';
 import 'package:raff/utils/ui/custom_container.dart';
 import 'package:raff/utils/ui/custom_text.dart';
@@ -48,7 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     focusNode: controller.nameNode,
                   ),
                   KeyboardActionsItem(
-                    focusNode: controller.emailNode,
+                    focusNode: controller.mobileNode,
                   ),
                   KeyboardActionsItem(
                     focusNode: controller.zipCodeNode,
@@ -70,7 +71,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     alignment: Alignment.topLeft,
                     padding:
                         EdgeInsets.symmetric(horizontal: 5.w, vertical: 10),
-                    child: SvgPicture.asset('assets/ic-back.svg'),
+                    child: RotatedBox(
+                      child: SvgPicture.asset('assets/ic-back.svg'),
+                      quarterTurns: AppLocale.shared.isArabic() ? 2 : 0,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -141,38 +145,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             AppTextField.shared.createTextField(
                               context: context,
-                              focusNode: controller.emailNode,
-                              labelText: S.of(context).email,
-                              controller: controller.emailController,
-                              errorText: controller.emailError.value,
+                              focusNode: controller.mobileNode,
+                              labelText: S.of(context).mobileNumber,
+                              controller: controller.mobileController,
+                              errorText: controller.mobileError.value,
                               enabled: false,
+                              hintText: '079XXXXXXX',
+                              keyboardType: TextInputType.phone,
                               inputAction: TextInputAction.next,
-                              keyboardType: TextInputType.emailAddress,
                               onSubmitted: (c) {},
-                              prefixIcon:
-                                  SvgPicture.asset('assets/ic-mail.svg'),
-                            ),
-                            SizedBox(
-                              height: 24,
-                            ),
-                            Obx(
-                              () => AppTextField.shared.createTextField(
-                                  context: context,
-                                  focusNode: controller.zipCodeNode,
-                                  labelText: S.of(context).zipCode,
-                                  controller: controller.zipCodeController,
-                                  errorText: controller.zipCodeError.value,
-                                  keyboardType: TextInputType.number,
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter.digitsOnly,
-                                    LengthLimitingTextInputFormatter(10),
-                                  ],
-                                  prefixIcon:
-                                      SvgPicture.asset('assets/ic-zip.svg'),
-                                  onSubmitted: (v) {
-                                    FocusManager.instance.primaryFocus!
-                                        .unfocus();
-                                  }),
+                              prefixIcon: Icon(
+                                Icons.phone_outlined,
+                                color: Colors.grey.shade400,
+                              ),
                             ),
                             SizedBox(
                               height: 240,

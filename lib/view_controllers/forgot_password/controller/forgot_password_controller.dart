@@ -11,36 +11,44 @@ import 'package:raff/view_controllers/otp/otp_screen.dart';
 import 'package:raff/view_controllers/otp/repository/otp_repository.dart';
 
 class ForgotPasswordController extends GetxController {
-  FocusNode emailNode = FocusNode();
-  TextEditingController emailController = TextEditingController();
+  FocusNode mobileNode = FocusNode();
+  TextEditingController mobileController = TextEditingController();
   FocusNode confirmPasswordNode = FocusNode();
   FocusNode passwordNode = FocusNode();
   TextEditingController confirmPasswordController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  RxString emailError = ''.obs;
+  RxString mobileError = ''.obs;
   RxString passwordError = ''.obs;
   RxString confirmPasswordError = ''.obs;
 
   void _clearErrors() {
-    emailError.value = '';
+    mobileError.value = '';
     passwordError.value = '';
     confirmPasswordError.value = '';
   }
 
   void requestResetPasswordOtp() {
     _clearErrors();
-    if (emailController.text.isEmpty) {
-      emailError.value = S.of(Get.context!).pleaseFillYourEmail;
+    if (mobileController.text.isEmpty) {
+      mobileError.value = S.of(Get.context!).pleaseFillYourMobileNumber;
       return;
     }
-    if (!GetUtils.isEmail(emailController.text)) {
-      emailError.value = S.of(Get.context!).pleaseEnterValidEmail;
+    if (!isValidMobileNumber(mobileController.text)) {
+      mobileError.value = S.of(Get.context!).pleaseEnterValidMobileNumber;
       return;
     }
     _clearErrors();
     _requestOtp();
   }
+  bool isValidMobileNumber(String input) {
+    if (!GetUtils.isNumericOnly(input)) return false;
 
+    if (input.length == 10 && input[0] == '0') return true;
+
+    if (input.length == 9 && input[0] == '7') return true;
+
+    return false;
+  }
   void forgetPasswordRequest(String token) async {
     _clearErrors();
     if (passwordController.text.isEmpty) {
@@ -61,7 +69,7 @@ class ForgotPasswordController extends GetxController {
     _clearErrors();
     ForgotPasswordRepository repository = ApiForgotPasswordRepository();
     var result = await repository.resetPassword(
-        emailController.text.trim(), passwordController.text, token);
+        mobileController.text.trim(), passwordController.text, token);
     if (result.isLeft) {
       _showErrorDialog(result.left);
     } else if (result.right.success) {
@@ -78,14 +86,14 @@ class ForgotPasswordController extends GetxController {
   void _requestOtp() async {
     OtpRepository repository = ApiOtpRepository();
     var result = await repository.requestOtp(
-        emailController.text, OTPType.PASSWORD_RESET);
+        mobileController.text, OTPType.PASSWORD_RESET);
     if (result.isLeft) {
       _showErrorDialog(result.left);
     } else if (result.right.success) {
       Get.to(() => OtpScreen(
             title: S.of(Get.context!).enterTheOtpCodeSentToYourEmailAddress,
             type: OTPType.PASSWORD_RESET,
-            email: emailController.text,
+            email: mobileController.text,
             onSuccess: (token) async {
               _navigateToResetPasswordScreen(token);
             },

@@ -770,10 +770,10 @@ class S {
     );
   }
 
-  /// `You can only edit your name and ZIP code`
+  /// `You can only edit your name`
   String get youCanOnlyEditYourNameAndZipCode {
     return Intl.message(
-      'You can only edit your name and ZIP code',
+      'You can only edit your name',
       name: 'youCanOnlyEditYourNameAndZipCode',
       desc: '',
       args: [],
@@ -1075,6 +1075,46 @@ class S {
     return Intl.message(
       'Update',
       name: 'update',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mobile Number`
+  String get mobileNumber {
+    return Intl.message(
+      'Mobile Number',
+      name: 'mobileNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password should be only english letters`
+  String get passwordShouldBeOnlyEnglishLetters {
+    return Intl.message(
+      'Password should be only english letters',
+      name: 'passwordShouldBeOnlyEnglishLetters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter valid mobile number`
+  String get pleaseEnterValidMobileNumber {
+    return Intl.message(
+      'Please enter valid mobile number',
+      name: 'pleaseEnterValidMobileNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please fill your mobile number`
+  String get pleaseFillYourMobileNumber {
+    return Intl.message(
+      'Please fill your mobile number',
+      name: 'pleaseFillYourMobileNumber',
       desc: '',
       args: [],
     );

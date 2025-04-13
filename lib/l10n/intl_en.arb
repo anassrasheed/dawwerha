@@ -71,7 +71,7 @@
   "pleaseEnterCorrectName": "Please enter correct name",
   "pleaseFillCorrectZipcode": "Please enter correct zip code",
   "menu": "Menu",
-  "youCanOnlyEditYourNameAndZipCode": "You can only edit your name and ZIP code",
+  "youCanOnlyEditYourNameAndZipCode": "You can only edit your name",
   "profile": "Profile",
   "pleaseSelectTheSuitableWayForYouToReachUs": "Please select the suitable way for you to reach us",
   "contactUs": "Contact Us",
@@ -101,5 +101,9 @@
   "multipleVinsDetectedPleaseSelectOneToPreviewVehicleData": "Multiple VINs detected. Please select one to view vehicle information",
   "pleaseGrantLocationPermissionFromTheAppSettingsToRetrieve": "Please grant Location permission from the App Settings to retrieve the zip code.",
   "openSettings": "Open Settings",
-  "update": "Update"
+  "update": "Update",
+  "mobileNumber": "Mobile Number",
+  "passwordShouldBeOnlyEnglishLetters": "Password should be only english letters",
+  "pleaseEnterValidMobileNumber": "Please enter valid mobile number",
+  "pleaseFillYourMobileNumber": "Please fill your mobile number"
 }

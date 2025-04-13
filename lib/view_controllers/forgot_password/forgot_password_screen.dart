@@ -41,7 +41,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 ),
                 actions: [
                   KeyboardActionsItem(
-                    focusNode: controller.emailNode,
+                    focusNode: controller.mobileNode,
                   ),
                 ]),
             child: Column(
@@ -100,8 +100,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                           topRight: Radius.circular(50)),
                     ),
                     child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 5.w),
+                      padding: EdgeInsets.symmetric(horizontal: 5.w),
                       child: SingleChildScrollView(
                         physics: BouncingScrollPhysics(),
                         child: Column(
@@ -114,18 +113,21 @@ class ForgotPasswordScreen extends StatelessWidget {
                             Obx(
                               () => AppTextField.shared.createTextField(
                                   context: context,
-                                  focusNode: controller.emailNode,
-                                  labelText: S.of(context).email,
-                                  controller: controller.emailController,
-                                  keyboardType: TextInputType.emailAddress,
-                                  inputAction: TextInputAction.done,
-                                  errorText: controller.emailError.value,
-                                  onSubmitted: (_) {
+                                  focusNode: controller.mobileNode,
+                                  labelText: S.of(context).mobileNumber,
+                                  controller: controller.mobileController,
+                                  errorText: controller.mobileError.value,
+                                  keyboardType: TextInputType.phone,
+                                  hintText: '079XXXXXXX',
+                                  inputAction: TextInputAction.next,
+                                  onSubmitted: (v) {
                                     FocusManager.instance.primaryFocus!
                                         .unfocus();
                                   },
-                                  prefixIcon:
-                                      SvgPicture.asset('assets/ic-mail.svg')),
+                                  prefixIcon: Icon(
+                                    Icons.phone_outlined,
+                                    color: Colors.grey.shade400,
+                                  )),
                             ),
                             SizedBox(
                               height: 48.h,
@@ -143,7 +145,14 @@ class ForgotPasswordScreen extends StatelessWidget {
                             SizedBox(
                               height: 34,
                             ),
-                            SvgPicture.asset('assets/copy_rights.svg'),
+                            Directionality(
+                              textDirection: TextDirection.ltr,
+                              child: CustomText(
+                                  text: S.of(context).copyRight(
+                                      getCurrentYear()),
+                                  fontSize: 12,
+                                  color: AppColors().greyTextColor),
+                            ),
                             SizedBox(
                               height: 1,
                             ),
@@ -160,4 +169,8 @@ class ForgotPasswordScreen extends StatelessWidget {
       ),
     );
   }
+  String getCurrentYear() {
+    return DateTime.now().year.toString();
+  }
+
 }

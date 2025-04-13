@@ -20,7 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
-  static String m0(year) => "© ${year} VINSweep. جميع الحقوق محفوظة";
+  static String m0(year) =>
+      "© ${year} مدرسة القصور المختلطة الأولى. جميع الحقوق محفوظة";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -77,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "menu": MessageLookupByLibrary.simpleMessage("القائمة"),
+        "mobileNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "multipleVinsDetectedPleaseSelectOneToPreviewVehicleData":
             MessageLookupByLibrary.simpleMessage(
                 "تم اكتشاف عدة أرقام VIN. يرجى اختيار أحدها لعرض معلومات المركبة"),
@@ -98,12 +100,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordMustBeAtLeast6Character": MessageLookupByLibrary.simpleMessage(
             "يجب أن تكون كلمة المرور 6 أحرف على الأقل"),
+        "passwordShouldBeOnlyEnglishLetters":
+            MessageLookupByLibrary.simpleMessage(
+                "يجب أن تتكون كلمة المرور من أحرف إنجليزية فقط"),
         "pleaseEnsureThatThePasswordAndConfirmPasswordFieldsMatch":
             MessageLookupByLibrary.simpleMessage("كلمتا المرور غير متطابقتين"),
         "pleaseEnterCorrectName":
             MessageLookupByLibrary.simpleMessage("يرجى إدخال اسم صحيح"),
         "pleaseEnterValidEmail": MessageLookupByLibrary.simpleMessage(
             "يرجى إدخال بريد إلكتروني صحيح"),
+        "pleaseEnterValidMobileNumber": MessageLookupByLibrary.simpleMessage(
+            "الرجاء إدخال رقم الهاتف المحمول الصحيح"),
         "pleaseEnterYourCredentialsBelow": MessageLookupByLibrary.simpleMessage(
             "يرجى إدخال بيانات الدخول أدناه"),
         "pleaseEnterYourCurrentPasswordAndNewPassword":
@@ -124,6 +131,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("يرجى إدخال بريدك الإلكتروني"),
         "pleaseFillYourInformationBelow":
             MessageLookupByLibrary.simpleMessage("يرجى إدخال معلوماتك أدناه"),
+        "pleaseFillYourMobileNumber": MessageLookupByLibrary.simpleMessage(
+            "الرجاء إدخال رقم هاتفك المحمول"),
         "pleaseFillYourName":
             MessageLookupByLibrary.simpleMessage("يرجى إدخال اسمك الكامل"),
         "pleaseFillYourPassword":
@@ -182,8 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcome": MessageLookupByLibrary.simpleMessage("مرحباً"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("واتساب"),
         "youCanOnlyEditYourNameAndZipCode":
-            MessageLookupByLibrary.simpleMessage(
-                "يمكنك فقط تعديل الاسم والرمز البريدي"),
+            MessageLookupByLibrary.simpleMessage("يمكنك فقط تعديل الاسم"),
         "youCreatedAnAccountSuccessfully":
             MessageLookupByLibrary.simpleMessage("تم إنشاء الحساب بنجاح! 🎉"),
         "yourPasswordChangedSuccessfully":

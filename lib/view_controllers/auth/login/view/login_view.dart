@@ -40,7 +40,7 @@ class LoginView extends StatelessWidget with AuthCommonViews {
           ),
           actions: [
             KeyboardActionsItem(
-              focusNode: controller.emailNode,
+              focusNode: controller.mobileNode,
             ),
             KeyboardActionsItem(
               focusNode: controller.passwordNode,
@@ -95,16 +95,17 @@ class LoginView extends StatelessWidget with AuthCommonViews {
                   Obx(
                     () => AppTextField.shared.createTextField(
                         context: context,
-                        focusNode: controller.emailNode,
-                        labelText: S.of(context).email,
-                        errorText: controller.emailError.value,
-                        controller: controller.emailController,
-                        keyboardType: TextInputType.emailAddress,
+                        focusNode: controller.mobileNode,
+                        labelText: S.of(context).mobileNumber,
+                        controller: controller.mobileController,
+                        errorText: controller.mobileError.value,
+                        hintText: '079XXXXXXX',
+                        keyboardType: TextInputType.phone,
                         inputAction: TextInputAction.next,
                         onSubmitted: (v) {
                           controller.passwordNode.requestFocus();
                         },
-                        prefixIcon: SvgPicture.asset('assets/ic-mail.svg')),
+                        prefixIcon: Icon(Icons.phone_outlined,color: Colors.grey.shade400,)),
                   ),
                   SizedBox(
                     height: 24,
@@ -114,6 +115,7 @@ class LoginView extends StatelessWidget with AuthCommonViews {
                         context: context,
                         focusNode: controller.passwordNode,
                         labelText: S.of(context).password,
+                        inputFormatters: [],
                         errorText: controller.passwordError.value,
                         controller: controller.passwordController,
                         inputAction: TextInputAction.done,
@@ -193,12 +195,15 @@ class LoginView extends StatelessWidget with AuthCommonViews {
                   SizedBox(
                     height: 34,
                   ),
-                  CustomText(
-                      text: S
-                          .of(context)
-                          .copyRight(splashController.getCurrentYear()),
-                      fontSize: 12,
-                      color: AppColors().greyTextColor),
+                  Directionality(
+                    textDirection: TextDirection.ltr,
+                    child: CustomText(
+                        text: S
+                            .of(context)
+                            .copyRight(splashController.getCurrentYear()),
+                        fontSize: 12,
+                        color: AppColors().greyTextColor),
+                  ),
                   SizedBox(
                     height: 5,
                   ),

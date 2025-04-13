@@ -180,12 +180,18 @@ class _ScanVinNumberScreenState extends State<ScanVinNumberScreen> {
                                 size: 20,
                                 fontWeight: FontWeight.bold,
                                 textColor: Colors.white,
-                                onPressed: () {
-                                }),
+                                onPressed: () {}),
                             SizedBox(
                               height: 20,
                             ),
-                            SvgPicture.asset('assets/copy_rights.svg'),
+                            Directionality(
+                              textDirection: TextDirection.ltr,
+                              child: CustomText(
+                                  text:
+                                      S.of(context).copyRight(getCurrentYear()),
+                                  fontSize: 12,
+                                  color: AppColors().greyTextColor),
+                            ),
                             SizedBox(
                               height: 2,
                             ),
@@ -201,5 +207,9 @@ class _ScanVinNumberScreenState extends State<ScanVinNumberScreen> {
         ),
       ),
     );
+  }
+
+  String getCurrentYear() {
+    return DateTime.now().year.toString();
   }
 }

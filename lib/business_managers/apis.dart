@@ -1,6 +1,6 @@
 const version = 'v1';
 
-String baseUrl = 'https://vinsweep.com/api/v1/';
+String baseUrl = 'http://plastic-reselling.foryo.lat:8080/api/v1/';
 
 class Apis {
   static final String login = baseUrl + 'auth/login';

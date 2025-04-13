@@ -203,7 +203,14 @@ class AppTextField {
                                       },
                                       child: Container(
                                         padding: EdgeInsets.only(
-                                            right: 6.w, top: 5, bottom: 5),
+                                            right: AppLocale.shared.isArabic()
+                                                ? 0
+                                                : 6.w,
+                                            left: !AppLocale.shared.isArabic()
+                                                ? 0
+                                                : 6.w,
+                                            top: 5,
+                                            bottom: 5),
                                         child: obscureText
                                             ? SvgPicture.asset(
                                                 'assets/ic-hide.svg',

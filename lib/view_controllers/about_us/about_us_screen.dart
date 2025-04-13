@@ -9,6 +9,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../configuration/app_colors.dart';
 import '../../generated/l10n.dart';
+import '../../l10n/app_locale.dart';
 
 class AboutUsScreen extends StatefulWidget {
   const AboutUsScreen({super.key});
@@ -55,7 +56,10 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                     alignment: Alignment.topLeft,
                     padding:
                         EdgeInsets.symmetric(horizontal: 5.w, vertical: 10),
-                    child: SvgPicture.asset('assets/ic-back.svg'),
+                    child: RotatedBox(
+                      child: SvgPicture.asset('assets/ic-back.svg'),
+                      quarterTurns: AppLocale.shared.isArabic() ? 2 : 0,
+                    ),
                   ),
                 ),
                 SizedBox(

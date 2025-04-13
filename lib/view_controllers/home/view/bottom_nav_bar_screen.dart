@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:diacritic/diacritic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,7 +11,6 @@ import 'package:raff/utils/ui/bottom_nav_bar/persistent-tab-view.dart';
 import 'package:raff/utils/ui/custom_text.dart';
 import 'package:raff/utils/ui/floating_action_bubble/floating_action_bubble.dart';
 import 'package:raff/view_controllers/home/controller/home_tab_controller.dart';
-import 'package:raff/view_controllers/home/model/camera_manager.dart';
 import 'package:raff/view_controllers/home/view/tabs/home/home_tab.dart';
 import 'package:raff/view_controllers/home/view/tabs/menu_tab.dart';
 import 'package:raff/view_controllers/scan_vinnumber/controller/scan_vinnumber_conroller.dart';
@@ -48,9 +45,6 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen>
         CurvedAnimation(curve: Curves.easeInOut, parent: _animationController);
     _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
     super.initState();
-    try {
-      CameraManager().initalizeController();
-    }catch(_){}
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
@@ -124,54 +118,57 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen>
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        PersistentTabView(
-          context,
-          controller: _controller,
-          screens: _buildScreens(),
-          items: _navBarsItems(),
-          confineInSafeArea: true,
-          backgroundColor: Color(0xFF0A2748),
-          navBarHeight: Platform.isAndroid ? 85 : 85,
-          handleAndroidBackButtonPress: true,
-          resizeToAvoidBottomInset: true,
-          stateManagement: true,
-          hideNavigationBarWhenKeyboardShows: true,
-          decoration: NavBarDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30.0),
-              topRight: Radius.circular(30.0),
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: PersistentTabView(
+            context,
+            controller: _controller,
+            screens: _buildScreens(),
+            items: _navBarsItems(),
+            confineInSafeArea: true,
+            backgroundColor: Color(0xFF0A2748),
+            navBarHeight: Platform.isAndroid ? 85 : 85,
+            handleAndroidBackButtonPress: true,
+            resizeToAvoidBottomInset: true,
+            stateManagement: true,
+            hideNavigationBarWhenKeyboardShows: true,
+            decoration: NavBarDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30.0),
+                topRight: Radius.circular(30.0),
+              ),
+              gradient: LinearGradient(colors: [
+                Color(0xff0F2138),
+                Color(0xff1D416F),
+              ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
+              colorBehindNavBar: Colors.transparent,
             ),
-            gradient: LinearGradient(colors: [
-              Color(0xff0F2138),
-              Color(0xff1D416F),
-            ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
-            colorBehindNavBar: Colors.transparent,
+            popAllScreensOnTapOfSelectedTab: true,
+            onWillPop: (v) {
+              if (!_showBottomNavBar) changeOverlay();
+              return Future.value(false);
+            },
+            popActionScreens: PopActionScreensType.all,
+            itemAnimationProperties: ItemAnimationProperties(
+              duration: Duration(milliseconds: 200),
+              curve: Curves.ease,
+            ),
+            onItemSelected: (index) {
+              if (index == 0) {
+                controller.getHistoryVehicle();
+              }
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+            hideNavigationBar: !_showBottomNavBar,
+            screenTransitionAnimation: ScreenTransitionAnimation(
+              animateTabTransition: true,
+              curve: Curves.ease,
+              duration: Duration(milliseconds: 200),
+            ),
+            navBarStyle: NavBarStyle.style8,
           ),
-          popAllScreensOnTapOfSelectedTab: true,
-          onWillPop: (v) {
-            if (!_showBottomNavBar) changeOverlay();
-            return Future.value(false);
-          },
-          popActionScreens: PopActionScreensType.all,
-          itemAnimationProperties: ItemAnimationProperties(
-            duration: Duration(milliseconds: 200),
-            curve: Curves.ease,
-          ),
-          onItemSelected: (index) {
-            if (index == 0) {
-              controller.getHistoryVehicle();
-            }
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
-          hideNavigationBar: !_showBottomNavBar,
-          screenTransitionAnimation: ScreenTransitionAnimation(
-            animateTabTransition: true,
-            curve: Curves.ease,
-            duration: Duration(milliseconds: 200),
-          ),
-          navBarStyle: NavBarStyle.style8,
         ),
         Positioned(
           bottom: Platform.isAndroid

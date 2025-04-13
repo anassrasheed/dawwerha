@@ -11,20 +11,20 @@ import 'package:raff/generated/l10n.dart';
 
 abstract class ProfileRepository {
   Future<Either<Failure, LoginResponse>> updateProfile(
-      String name, String zipCode,
+      String name,
       {bool showLoading = true});
 }
 
 class ApiProfileRepository extends ProfileRepository {
   @override
   Future<Either<Failure, LoginResponse>> updateProfile(
-      String name, String zipCode,
+      String name,
       {bool showLoading = true}) async {
     var result = await HttpWrapper(
         context: Get.context!,
         url: Apis.updateProfile,
         showLoading: showLoading,
-        postParameters: {"fullName": name, "zipCode": zipCode}).post();
+        postParameters: {"fullName": name,}).post();
     if (result?.stringBody != null) {
       var body = json.decode(result!.stringBody!);
       if (body['code'] == 200) {

@@ -9,20 +9,20 @@ import 'package:raff/view_controllers/auth/login/repository/login_repository.dar
 import 'package:raff/view_controllers/home/view/bottom_nav_bar_screen.dart';
 
 class LoginController extends GetxController {
-  final FocusNode emailNode = FocusNode();
+  final FocusNode mobileNode = FocusNode();
   final FocusNode passwordNode = FocusNode();
-  final TextEditingController emailController = TextEditingController();
+  final TextEditingController mobileController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final RxBool isRememberMeChecked = false.obs;
 
-  RxString emailError = ''.obs;
+  RxString mobileError = ''.obs;
   RxString passwordError = ''.obs;
 
   @override
   void onInit() async {
     var email = await SecureStorageHelper().read(key: CacheKeys.email);
     if (email.isNotEmpty) {
-      emailController.text = email;
+      mobileController.text = email;
     }
     super.onInit();
   }
@@ -31,13 +31,13 @@ class LoginController extends GetxController {
   void onReady() async {
     var email = await SecureStorageHelper().read(key: CacheKeys.email);
     if (email.isNotEmpty) {
-      emailController.text = email;
+      mobileController.text = email;
     }
     super.onReady();
   }
 
   void clearEmail() {
-    emailController.text = '';
+    mobileController.text = '';
   }
 
   void changeRememberMeChecked(bool nValue) {
@@ -45,18 +45,28 @@ class LoginController extends GetxController {
   }
 
   void _clearErrorMessages() {
-    emailError.value = '';
+    mobileError.value = '';
     passwordError.value = '';
+  }
+
+  bool isValidMobileNumber(String input) {
+    if (!GetUtils.isNumericOnly(input)) return false;
+
+    if (input.length == 10 && input[0] == '0') return true;
+
+    if (input.length == 9 && input[0] == '7') return true;
+
+    return false;
   }
 
   void onLoginPressed() async {
     _clearErrorMessages();
-    if (emailController.text.isEmpty) {
-      emailError.value = S.of(Get.context!).pleaseFillYourEmail;
+    if (mobileController.text.isEmpty) {
+      mobileError.value = S.of(Get.context!).pleaseFillYourMobileNumber;
       return;
     }
-    if (!GetUtils.isEmail(emailController.text)) {
-      emailError.value = S.of(Get.context!).pleaseEnterValidEmail;
+    if (!isValidMobileNumber(mobileController.text)) {
+      mobileError.value = S.of(Get.context!).pleaseEnterValidMobileNumber;
       return;
     }
 
@@ -64,10 +74,11 @@ class LoginController extends GetxController {
       passwordError.value = S.of(Get.context!).pleaseFillYourPassword;
       return;
     }
+
     _clearErrorMessages();
     LoginRepository repository = ApiLoginRepository();
     var result =
-        await repository.login(emailController.text, passwordController.text);
+        await repository.login(mobileController.text, passwordController.text);
     if (result.isLeft) {
       DialogUtils.showErrorDialog(
           title: S.of(Get.context!).warning,
@@ -84,7 +95,7 @@ class LoginController extends GetxController {
 
   _saveCredentials() {
     SecureStorageHelper()
-        .save(key: CacheKeys.email, value: emailController.text);
+        .save(key: CacheKeys.email, value: mobileController.text);
     SecureStorageHelper()
         .save(key: CacheKeys.password, value: passwordController.text);
   }

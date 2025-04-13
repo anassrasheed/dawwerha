@@ -16,30 +16,25 @@ import 'package:raff/view_controllers/otp/otp_screen.dart';
 import 'package:raff/view_controllers/otp/repository/otp_repository.dart';
 
 class RegisterController extends GetxController {
-  final FocusNode emailNode = FocusNode();
+  final FocusNode mobileNode = FocusNode();
   final FocusNode passwordNode = FocusNode();
   final FocusNode nameNode = FocusNode();
-  final FocusNode zipCodeNode = FocusNode();
-  final TextEditingController emailController = TextEditingController();
+  final TextEditingController mobileController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
-  final TextEditingController zipCodeController = TextEditingController();
-  RxString emailError = ''.obs;
+  RxString mobileError = ''.obs;
   RxString passwordError = ''.obs;
   RxString nameError = ''.obs;
-  RxString zipCodeError = ''.obs;
 
   @override
   void onInit() {
     super.onInit();
-    _requestPermission();
   }
 
   void _clearErrorMessages() {
-    emailError.value = '';
+    mobileError.value = '';
     passwordError.value = '';
     nameError.value = '';
-    zipCodeError.value = '';
   }
 
   void onRegisterPressed() async {
@@ -57,12 +52,12 @@ class RegisterController extends GetxController {
       nameError.value = S.of(Get.context!).pleaseFillYourName;
       return;
     }
-    if (emailController.text.isEmpty) {
-      emailError.value = S.of(Get.context!).pleaseFillYourEmail;
+    if (mobileController.text.isEmpty) {
+      mobileError.value = S.of(Get.context!).pleaseFillYourMobileNumber;
       return;
     }
-    if (!GetUtils.isEmail(emailController.text)) {
-      emailError.value = S.of(Get.context!).pleaseEnterValidEmail;
+    if (!isValidMobileNumber(mobileController.text)) {
+      mobileError.value = S.of(Get.context!).pleaseEnterValidMobileNumber;
       return;
     }
 
@@ -74,26 +69,24 @@ class RegisterController extends GetxController {
       passwordError.value = S.of(Get.context!).passwordMustBeAtLeast6Character;
       return;
     }
-    if (zipCodeController.text.isEmpty) {
-      zipCodeError.value = S.of(Get.context!).pleaseFillYourCountryZipcode;
+
+    if (!isEnglishLettersDigitsAndSymbols(passwordController.text)) {
+      passwordError.value =
+          S.of(Get.context!).passwordShouldBeOnlyEnglishLetters;
       return;
     }
-    if (zipCodeController.text.length < 3 ||
-        zipCodeController.text.length > 10) {
-      zipCodeError.value = S.of(Get.context!).pleaseFillCorrectZipcode;
-      return;
-    }
+
     _clearErrorMessages();
     OtpRepository repository = ApiOtpRepository();
     var result = await repository.requestOtp(
-        emailController.text, OTPType.EMAIL_VERIFICATION);
+        mobileController.text, OTPType.EMAIL_VERIFICATION);
     if (result.isLeft) {
       _showErrorDialog(result);
     } else if (result.right.success) {
       Get.to(() => OtpScreen(
             title: S.of(Get.context!).enterTheOtpCodeSentToYourEmailAddress,
             type: OTPType.EMAIL_VERIFICATION,
-            email: emailController.text,
+            email: mobileController.text,
             onSuccess: (token) async {
               await _callRegisterApi(token);
             },
@@ -101,6 +94,35 @@ class RegisterController extends GetxController {
     }
 
     return;
+  }
+
+  bool isValidMobileNumber(String input) {
+    if (!GetUtils.isNumericOnly(input)) return false;
+
+    if (input.length == 10 && input[0] == '0') return true;
+
+    if (input.length == 9 && input[0] == '7') return true;
+
+    return false;
+  }
+
+  bool isEnglishLettersDigitsAndSymbols(String input) {
+    const allowedSymbols = r"!$%^&*()-_=+";
+
+    for (int i = 0; i < input.length; i++) {
+      final char = input[i];
+      final code = char.codeUnitAt(0);
+
+      final isUppercase = code >= 65 && code <= 90; // A-Z
+      final isLowercase = code >= 97 && code <= 122; // a-z
+      final isDigit = code >= 48 && code <= 57; // 0-9
+      final isAllowedSymbol = allowedSymbols.contains(char);
+
+      if (!(isUppercase || isLowercase || isDigit || isAllowedSymbol)) {
+        return false;
+      }
+    }
+    return true;
   }
 
   Future<void> _callRegisterApi(String token) async {
@@ -138,12 +160,8 @@ class RegisterController extends GetxController {
 
   Future<Either<Failure, GenericResponse>> _hitRegisterApi(
       RegisterRepository repository, String token) async {
-    var result = await repository.register(
-        emailController.text,
-        passwordController.text,
-        zipCodeController.text,
-        nameController.text,
-        token);
+    var result = await repository.register(mobileController.text,
+        passwordController.text, nameController.text, token);
     return result;
   }
 
@@ -151,55 +169,7 @@ class RegisterController extends GetxController {
 
   void _clearAllControllers() {
     nameController.clear();
-    emailController.clear();
+    mobileController.clear();
     passwordController.clear();
-    zipCodeController.clear();
-  }
-
-  void _requestPermission() async {
-    try {
-      if (await Permission.location.status == PermissionStatus.granted) {
-        await _fillData();
-      } else if (await Permission.location.status == PermissionStatus.denied) {
-        await Permission.location.request();
-        _requestPermission();
-      } else if (await Permission.location.status ==
-          PermissionStatus.permanentlyDenied) {
-        DialogUtils.showDialogWithButtons(
-            title: S.of(Get.context!).warning,
-            message: S
-                .of(Get.context!)
-                .pleaseGrantLocationPermissionFromTheAppSettingsToRetrieve,
-            context: Get.context!,
-            positiveButtonTitle: S.of(Get.context!).openSettings,
-            onTap: () async {
-              await openAppSettings();
-              if (await Permission.location.status == PermissionStatus.granted)
-                await _fillData();
-            });
-      }
-    } catch (_) {
-      zipCodeController.text = '';
-    }
-  }
-
-  Future<void> _fillData() async {
-    if (await _checkIFGPSIsEnable()) {
-      await _fillZipCode();
-    } else {
-      Geolocator.openLocationSettings();
-    }
-  }
-
-  Future<void> _fillZipCode() async {
-    var position = await Geolocator.getCurrentPosition();
-    Placemark place =
-        (await placemarkFromCoordinates(position.latitude, position.longitude))
-            .first;
-    zipCodeController.text = place.postalCode ?? '';
-  }
-
-  Future<bool> _checkIFGPSIsEnable() async {
-    return await Geolocator.isLocationServiceEnabled();
   }
 }

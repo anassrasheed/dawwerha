@@ -6,6 +6,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../configuration/app_colors.dart';
 import '../../generated/l10n.dart';
+import '../../l10n/app_locale.dart';
 import '../../utils/ui/custom_button.dart';
 import '../../utils/ui/custom_container.dart';
 import '../../utils/ui/custom_text.dart';
@@ -41,7 +42,10 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                   color: Colors.transparent,
                   alignment: Alignment.topLeft,
                   padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 10),
-                  child: SvgPicture.asset('assets/ic-back.svg'),
+                  child: RotatedBox(
+                    child: SvgPicture.asset('assets/ic-back.svg'),
+                    quarterTurns: AppLocale.shared.isArabic() ? 2 : 0,
+                  ),
                 ),
               ),
               SizedBox(
