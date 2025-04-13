@@ -26,12 +26,19 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+        "adDescription": MessageLookupByLibrary.simpleMessage("وصف الإعلان"),
+        "adTitle": MessageLookupByLibrary.simpleMessage("عنوان الإعلان"),
+        "addItem": MessageLookupByLibrary.simpleMessage("إضافة عنصر"),
+        "addYourPlasticItemToBePublished": MessageLookupByLibrary.simpleMessage(
+            "أضف منتجك البلاستيكي المراد نشره"),
+        "address": MessageLookupByLibrary.simpleMessage("تفاصيل العنوان"),
         "back": MessageLookupByLibrary.simpleMessage("عودة"),
         "callUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
         "camera": MessageLookupByLibrary.simpleMessage("الكاميرا"),
         "cameraPermissionIsRequired": MessageLookupByLibrary.simpleMessage(
             "يتطلب إذن الوصول إلى الكاميرا"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+        "cancelAction": MessageLookupByLibrary.simpleMessage("تراجع"),
         "change": MessageLookupByLibrary.simpleMessage("تغيير"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
@@ -75,6 +82,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("رمز التحقق غير صحيح"),
         "latestScans":
             MessageLookupByLibrary.simpleMessage("أحدث عمليات المسح"),
+        "learnActivly":
+            MessageLookupByLibrary.simpleMessage("معا لتعلم نشط في بيئة آمنة"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "menu": MessageLookupByLibrary.simpleMessage("القائمة"),
@@ -89,6 +98,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "يجب أن تكون كلمة المرور الجديدة مختلفة عن الحالية"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
+        "noAdsYet":
+            MessageLookupByLibrary.simpleMessage("لا توجد إعلانات حتى الآن"),
         "noScansYet":
             MessageLookupByLibrary.simpleMessage("لا توجد عمليات مسح بعد"),
         "noVinDetectedFromTheImage":
@@ -103,6 +114,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordShouldBeOnlyEnglishLetters":
             MessageLookupByLibrary.simpleMessage(
                 "يجب أن تتكون كلمة المرور من أحرف إنجليزية فقط"),
+        "pickImage": MessageLookupByLibrary.simpleMessage("اختر الصورة"),
+        "plasticAds": MessageLookupByLibrary.simpleMessage(
+            "إعلانات إعادة تدوير البلاستيك"),
         "pleaseEnsureThatThePasswordAndConfirmPasswordFieldsMatch":
             MessageLookupByLibrary.simpleMessage("كلمتا المرور غير متطابقتين"),
         "pleaseEnterCorrectName":
@@ -177,8 +191,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
         "theListIsCurrentlyEmpty":
             MessageLookupByLibrary.simpleMessage("القائمة فارغة حالياً"),
+        "thisAppIs": MessageLookupByLibrary.simpleMessage(
+            "هذه التطبيق هو عمل تطوعي من مدرسة القصور المختلطة الأولى"),
         "thisFieldIsRequired":
             MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
+        "totalAds": MessageLookupByLibrary.simpleMessage("إجمالي الإعلانات"),
         "totalSweeps":
             MessageLookupByLibrary.simpleMessage("إجمالي عمليات المسح"),
         "update": MessageLookupByLibrary.simpleMessage("تحديث"),
@@ -194,6 +211,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("يمكنك فقط تعديل الاسم"),
         "youCreatedAnAccountSuccessfully":
             MessageLookupByLibrary.simpleMessage("تم إنشاء الحساب بنجاح! 🎉"),
+        "yourAdsHasAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "لقد تمت إضافة إعلاناتك بنجاح"),
         "yourPasswordChangedSuccessfully":
             MessageLookupByLibrary.simpleMessage("تم تغيير كلمة المرور بنجاح"),
         "yourPasswordResetSuccessfully": MessageLookupByLibrary.simpleMessage(

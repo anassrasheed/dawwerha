@@ -10,6 +10,7 @@ import 'package:raff/generated/l10n.dart';
 import 'package:raff/utils/ui/bottom_nav_bar/persistent-tab-view.dart';
 import 'package:raff/utils/ui/custom_text.dart';
 import 'package:raff/utils/ui/floating_action_bubble/floating_action_bubble.dart';
+import 'package:raff/view_controllers/ads/add_ads_screen.dart';
 import 'package:raff/view_controllers/home/controller/home_tab_controller.dart';
 import 'package:raff/view_controllers/home/view/tabs/home/home_tab.dart';
 import 'package:raff/view_controllers/home/view/tabs/menu_tab.dart';
@@ -191,7 +192,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen>
                           children: [
                             GestureDetector(
                               onTap: () {
-                                changeOverlay();
+                              Get.to(AddAdsScreen());
                               },
                               child: Image.asset(
                                 'assets/floating_main_bubtton.png',

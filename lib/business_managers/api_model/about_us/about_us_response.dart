@@ -23,7 +23,7 @@ class AboutUsResponse {
         success: json["success"],
         code: json["code"],
         message: json["message"],
-        result: json["result"],
+        result: json["result"]==null?'':json["result"],
       );
 
   Map<String, dynamic> toJson() => {

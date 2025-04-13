@@ -1119,6 +1119,136 @@ class S {
       args: [],
     );
   }
+
+  /// `Ad Title`
+  String get adTitle {
+    return Intl.message(
+      'Ad Title',
+      name: 'adTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ad Description`
+  String get adDescription {
+    return Intl.message(
+      'Ad Description',
+      name: 'adDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add item`
+  String get addItem {
+    return Intl.message(
+      'Add item',
+      name: 'addItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add your plastic item to be published`
+  String get addYourPlasticItemToBePublished {
+    return Intl.message(
+      'Add your plastic item to be published',
+      name: 'addYourPlasticItemToBePublished',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pick image`
+  String get pickImage {
+    return Intl.message(
+      'Pick image',
+      name: 'pickImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تراجع`
+  String get cancelAction {
+    return Intl.message(
+      'تراجع',
+      name: 'cancelAction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Ads has added successfully`
+  String get yourAdsHasAddedSuccessfully {
+    return Intl.message(
+      'Your Ads has added successfully',
+      name: 'yourAdsHasAddedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Ads`
+  String get totalAds {
+    return Intl.message(
+      'Total Ads',
+      name: 'totalAds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plastic Ads`
+  String get plasticAds {
+    return Intl.message(
+      'Plastic Ads',
+      name: 'plasticAds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No ads yet`
+  String get noAdsYet {
+    return Intl.message(
+      'No ads yet',
+      name: 'noAdsYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `معا لتعلم نشط في بيئة آمنة`
+  String get learnActivly {
+    return Intl.message(
+      'معا لتعلم نشط في بيئة آمنة',
+      name: 'learnActivly',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `هذه التطبيق هو عمل تطوعي من مدرسة القصور المختلطة الأولى`
+  String get thisAppIs {
+    return Intl.message(
+      'هذه التطبيق هو عمل تطوعي من مدرسة القصور المختلطة الأولى',
+      name: 'thisAppIs',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

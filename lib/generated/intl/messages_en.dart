@@ -25,12 +25,19 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUs": MessageLookupByLibrary.simpleMessage("About Us"),
+        "adDescription": MessageLookupByLibrary.simpleMessage("Ad Description"),
+        "adTitle": MessageLookupByLibrary.simpleMessage("Ad Title"),
+        "addItem": MessageLookupByLibrary.simpleMessage("Add item"),
+        "addYourPlasticItemToBePublished": MessageLookupByLibrary.simpleMessage(
+            "Add your plastic item to be published"),
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "callUs": MessageLookupByLibrary.simpleMessage("Call Us"),
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
         "cameraPermissionIsRequired": MessageLookupByLibrary.simpleMessage(
             "Camera permission is required"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "cancelAction": MessageLookupByLibrary.simpleMessage("تراجع"),
         "change": MessageLookupByLibrary.simpleMessage("Change"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Change Password"),
@@ -72,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalidOtpValue":
             MessageLookupByLibrary.simpleMessage("Invalid OTP Code"),
         "latestScans": MessageLookupByLibrary.simpleMessage("Latest Scans"),
+        "learnActivly":
+            MessageLookupByLibrary.simpleMessage("معا لتعلم نشط في بيئة آمنة"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "menu": MessageLookupByLibrary.simpleMessage("Menu"),
@@ -85,6 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "New password must be different from the current password"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "noAdsYet": MessageLookupByLibrary.simpleMessage("No ads yet"),
         "noScansYet": MessageLookupByLibrary.simpleMessage("No Scans Yet"),
         "noVinDetectedFromTheImage":
             MessageLookupByLibrary.simpleMessage("No VIN Detected"),
@@ -98,6 +108,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordShouldBeOnlyEnglishLetters":
             MessageLookupByLibrary.simpleMessage(
                 "Password should be only english letters"),
+        "pickImage": MessageLookupByLibrary.simpleMessage("Pick image"),
+        "plasticAds": MessageLookupByLibrary.simpleMessage("Plastic Ads"),
         "pleaseEnsureThatThePasswordAndConfirmPasswordFieldsMatch":
             MessageLookupByLibrary.simpleMessage("Passwords don\'t match"),
         "pleaseEnterCorrectName":
@@ -172,8 +184,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Terms & Conditions"),
         "theListIsCurrentlyEmpty":
             MessageLookupByLibrary.simpleMessage("The list is currently empty"),
+        "thisAppIs": MessageLookupByLibrary.simpleMessage(
+            "هذه التطبيق هو عمل تطوعي من مدرسة القصور المختلطة الأولى"),
         "thisFieldIsRequired":
             MessageLookupByLibrary.simpleMessage("This field is required"),
+        "totalAds": MessageLookupByLibrary.simpleMessage("Total Ads"),
         "totalSweeps": MessageLookupByLibrary.simpleMessage("Total Sweeps"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "upload": MessageLookupByLibrary.simpleMessage("Upload"),
@@ -188,6 +203,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("You can only edit your name"),
         "youCreatedAnAccountSuccessfully": MessageLookupByLibrary.simpleMessage(
             "You created an account successfully! 🎉"),
+        "yourAdsHasAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Your Ads has added successfully"),
         "yourPasswordChangedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Your Password Was Changed Successfully"),
         "yourPasswordResetSuccessfully": MessageLookupByLibrary.simpleMessage(

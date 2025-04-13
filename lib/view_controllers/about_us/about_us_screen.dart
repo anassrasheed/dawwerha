@@ -68,7 +68,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.w),
                   child: CustomText(
-                    text: "About Us",
+                    text: S.of(context).aboutUs,
                     fontSize: 22,
                     color: Colors.white,
                     textAlign: TextAlign.start,

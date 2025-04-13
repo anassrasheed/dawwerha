@@ -90,30 +90,36 @@ class _HomeTabState extends State<HomeTab> {
                 SizedBox(
                   height: 12,
                 ),
-                Row(
-                  children: [
-                    CustomText(
-                      text: S.of(context).welcome,
-                      fontSize: 16,
-                      color: Colors.black,
-                      fontWeight: FontWeight.normal,
+                Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      children: [
+                        CustomText(
+                          text: S.of(context).welcome,
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.normal,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        CustomText(
+                          text: (CurrentSession()
+                                      .getUser()
+                                      ?.user
+                                      ?.fullName
+                                      ?.getFirstName() ??
+                                  '') +
+                              ",",
+                          fontSize: 16,
+                          // color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    CustomText(
-                      text: (CurrentSession()
-                                  .getUser()
-                                  ?.user
-                                  ?.fullName
-                                  ?.getFirstName() ??
-                              '') +
-                          ",",
-                      fontSize: 16,
-                      // color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ],
+                  ),
                 ),
                 SizedBox(
                   height: 15,
@@ -121,7 +127,9 @@ class _HomeTabState extends State<HomeTab> {
                 Stack(
                   children: [
                     SvgPicture.asset(
-                      "assets/Illustration with card.svg",
+                      "assets/plastic_header.svg",
+                      width: 100.w,
+                      fit: BoxFit.fitWidth,
                     ),
                     Positioned(
                       bottom: 24,
@@ -138,7 +146,7 @@ class _HomeTabState extends State<HomeTab> {
                             ),
                           ),
                           Text(
-                            S.of(context).totalSweeps,
+                            S.of(context).totalAds,
                             style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.normal,
@@ -181,11 +189,16 @@ class _HomeTabState extends State<HomeTab> {
                 SizedBox(
                   height: 24,
                 ),
-                CustomText(
-                  text: S.of(context).latestScans,
-                  fontSize: 16,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    CustomText(
+                      text: S.of(context).plasticAds,
+                      fontSize: 16,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 10,
@@ -233,7 +246,7 @@ class _HomeTabState extends State<HomeTab> {
             height: 32,
           ),
           CustomText(
-            text: S.of(context).noScansYet,
+            text: S.of(context).noAdsYet,
             fontSize: 20,
             color: AppColors.primaryColor,
             fontWeight: FontWeight.bold,

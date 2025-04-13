@@ -2,9 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:raff/configuration/app_colors.dart';
+import 'package:raff/generated/l10n.dart';
+import 'package:raff/utils/ui/custom_text.dart';
 import 'package:raff/utils/ui/progress_hud.dart';
 import 'package:raff/view_controllers/splash/splash_controller.dart';
-import 'package:video_player/video_player.dart';
+import 'package:sizer/sizer.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -28,7 +31,39 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: ProgressHud.shared.createLoadingView()),
+      body: Container(
+          child: Center(
+              child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            child: CustomText(
+              text: S.of(context).thisAppIs,
+              color: AppColors.primaryColor,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+            width: 90.w,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Image.asset(
+            'assets/splash_logo.jpeg',
+            height: 200,
+            width: 90.w,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          CustomText(
+            text: S.of(context).learnActivly,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.green,
+          ),
+        ],
+      ))),
     );
   }
 }
