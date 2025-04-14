@@ -99,10 +99,10 @@ class SplashController extends GetxController {
 
         if (!isIgnoreIntro) {
           getIntro();
-          SharedPreferencesHelper.save(
-            key: CacheKeys.isIgnoreIntro,
-            value: 'true',
-          );
+          // SharedPreferencesHelper.save(
+          //   key: CacheKeys.isIgnoreIntro,
+          //   value: 'true',
+          // );
         } else {
           _silentLogin(onFailedLogin: () {
             type.value = NavigateType.login;
