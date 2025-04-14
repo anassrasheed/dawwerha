@@ -38,9 +38,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 keyboardBarColor: Colors.grey[200],
                 nextFocus: true,
                 defaultDoneWidget: Text(
-                  S
-                      .of(context)
-                      .done,
+                  S.of(context).done,
                   style: TextStyle(
                       color: AppColors().blackTextColor,
                       fontSize: 11.sp,
@@ -72,7 +70,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     color: Colors.transparent,
                     alignment: Alignment.topLeft,
                     padding:
-                    EdgeInsets.symmetric(horizontal: 5.w, vertical: 10),
+                        EdgeInsets.symmetric(horizontal: 5.w, vertical: 10),
                     child: RotatedBox(
                       child: SvgPicture.asset('assets/ic-back.svg'),
                       quarterTurns: AppLocale.shared.isArabic() ? 2 : 0,
@@ -85,9 +83,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.w),
                   child: CustomText(
-                    text: S
-                        .of(context)
-                        .changePassword,
+                    text: S.of(context).changePassword,
                     fontSize: 22,
                     color: Colors.white,
                     textAlign: TextAlign.start,
@@ -133,87 +129,74 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                               height: 32,
                             ),
                             Obx(
-                                  () =>
-                                  AppTextField.shared.createTextField(
-                                      context: context,
-                                      focusNode: controller.currentPasswordNode,
-                                      labelText: S
-                                          .of(context)
-                                          .currentPassword,
-                                      errorText: controller.oldPasswordError
-                                          .value,
-                                      controller:
+                              () => AppTextField.shared.createTextField(
+                                  context: context,
+                                  focusNode: controller.currentPasswordNode,
+                                  textDirection: TextDirection.ltr,
+                                  labelText: S.of(context).currentPassword,
+                                  errorText: controller.oldPasswordError.value,
+                                  controller:
                                       controller.currentPasswordController,
-                                      showPasswordEye: true,
-                                      onSubmitted: (v) {
-                                        controller.newPasswordNode
-                                            .requestFocus();
-                                      },
-                                      inputAction: TextInputAction.next,
-                                      prefixIcon: SvgPicture.asset(
-                                          'assets/password_icon.svg'),
-                                      obscureText: true),
+                                  showPasswordEye: true,
+                                  onSubmitted: (v) {
+                                    controller.newPasswordNode.requestFocus();
+                                  },
+                                  inputAction: TextInputAction.next,
+                                  prefixIcon: SvgPicture.asset(
+                                      'assets/password_icon.svg'),
+                                  obscureText: true),
                             ),
                             SizedBox(
                               height: 24,
                             ),
                             Obx(
-                                  () =>
-                                  AppTextField.shared.createTextField(
-                                      context: context,
-                                      focusNode: controller.newPasswordNode,
-                                      labelText: S
-                                          .of(context)
-                                          .newPassword,
-                                      errorText: controller.newPasswordError
-                                          .value,
-                                      controller: controller
-                                          .newPasswordController,
-                                      showPasswordEye: true,
-                                      onSubmitted: (v) {
-                                        controller.confirmNewPasswordNode
-                                            .requestFocus();
-                                      },
-                                      inputAction: TextInputAction.next,
-                                      prefixIcon: SvgPicture.asset(
-                                          'assets/password_icon.svg'),
-                                      obscureText: true),
+                              () => AppTextField.shared.createTextField(
+                                  context: context,
+                                  focusNode: controller.newPasswordNode,
+                                  textDirection: TextDirection.ltr,
+                                  labelText: S.of(context).newPassword,
+                                  errorText: controller.newPasswordError.value,
+                                  controller: controller.newPasswordController,
+                                  showPasswordEye: true,
+                                  onSubmitted: (v) {
+                                    controller.confirmNewPasswordNode
+                                        .requestFocus();
+                                  },
+                                  inputAction: TextInputAction.next,
+                                  prefixIcon: SvgPicture.asset(
+                                      'assets/password_icon.svg'),
+                                  obscureText: true),
                             ),
                             SizedBox(
                               height: 24,
                             ),
                             Obx(
-                                  () =>
-                                  AppTextField.shared.createTextField(
-                                      context: context,
-                                      focusNode: controller
-                                          .confirmNewPasswordNode,
-                                      labelText: S
-                                          .of(context)
-                                          .retypeNewPassword,
-                                      errorText:
+                              () => AppTextField.shared.createTextField(
+                                  context: context,
+                                  focusNode: controller.confirmNewPasswordNode,
+                                  textDirection: TextDirection.ltr,
+                                  labelText: S.of(context).retypeNewPassword,
+                                  errorText:
                                       controller.confirmNewPasswordError.value,
-                                      controller:
+                                  controller:
                                       controller.confirmNewPasswordController,
-                                      showPasswordEye: true,
-                                      onSubmitted: (v) {
-                                        FocusManager.instance.primaryFocus!
-                                            .unfocus();
-                                      },
-                                      inputAction: TextInputAction.done,
-                                      prefixIcon: SvgPicture.asset(
-                                          'assets/password_icon.svg'),
-                                      obscureText: true),
+                                  showPasswordEye: true,
+                                  onSubmitted: (v) {
+                                    FocusManager.instance.primaryFocus!
+                                        .unfocus();
+                                  },
+                                  inputAction: TextInputAction.done,
+                                  prefixIcon: SvgPicture.asset(
+                                      'assets/password_icon.svg'),
+                                  obscureText: true),
                             ),
                             SizedBox(
-                              height: 220,
+                              height: 140,
                             ),
                             CustomButton(
                                 context: context,
                                 width: 100.w,
-                                title: S
-                                    .of(context)
-                                    .change,
+                                title: S.of(context).change,
                                 size: 20,
                                 fontWeight: FontWeight.bold,
                                 textColor: Colors.white,
@@ -227,10 +210,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                             Directionality(
                               textDirection: TextDirection.ltr,
                               child: CustomText(
-                                  text: S
-                                      .of(context)
-                                      .copyRight(
-                                      getCurrentYear()),
+                                  text:
+                                      S.of(context).copyRight(getCurrentYear()),
                                   fontSize: 12,
                                   color: AppColors().greyTextColor),
                             ),
@@ -249,24 +230,23 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         ),
       ),
 
-    //                     SizedBox(
-    //                       height: 2,
-    //                     ),
-    //                   ],
-    //                 ),
-    //               ),
-    //             ),
-    //           ],
-    //         ),
-    //       ),
-    //     )
-    //   ],
-    // ),
+      //                     SizedBox(
+      //                       height: 2,
+      //                     ),
+      //                   ],
+      //                 ),
+      //               ),
+      //             ),
+      //           ],
+      //         ),
+      //       ),
+      //     )
+      //   ],
+      // ),
     );
   }
 
   String getCurrentYear() {
     return DateTime.now().year.toString();
   }
-
 }

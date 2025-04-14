@@ -1249,6 +1249,76 @@ class S {
       args: [],
     );
   }
+
+  /// `My Ads`
+  String get myAds {
+    return Intl.message(
+      'My Ads',
+      name: 'myAds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OTP Code`
+  String get otpCode {
+    return Intl.message(
+      'OTP Code',
+      name: 'otpCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ad address:`
+  String get adAddress {
+    return Intl.message(
+      'Ad address:',
+      name: 'adAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please upload a plastic image`
+  String get pleaseUploadAPlasticImage {
+    return Intl.message(
+      'Please upload a plastic image',
+      name: 'pleaseUploadAPlasticImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ad status:`
+  String get adStatus {
+    return Intl.message(
+      'Ad status:',
+      name: 'adStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Active`
+  String get active {
+    return Intl.message(
+      'Active',
+      name: 'active',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inactive`
+  String get inactive {
+    return Intl.message(
+      'Inactive',
+      name: 'inactive',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -44,6 +44,8 @@ dependencies:
   diacritic: 0.1.6
   intl_utils: 2.8.7
   package_info_plus: 8.3.0
+  flutter_image_compress:
+  path_provider:
 flutter_launcher_icons:
   image_path_ios: "assets/app_icon.png"
   android: false

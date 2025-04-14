@@ -26,7 +26,10 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+        "active": MessageLookupByLibrary.simpleMessage("فعال"),
+        "adAddress": MessageLookupByLibrary.simpleMessage("عنوان الاستلام:"),
         "adDescription": MessageLookupByLibrary.simpleMessage("وصف الإعلان"),
+        "adStatus": MessageLookupByLibrary.simpleMessage("حالة الإعلان:"),
         "adTitle": MessageLookupByLibrary.simpleMessage("عنوان الإعلان"),
         "addItem": MessageLookupByLibrary.simpleMessage("إضافة عنصر"),
         "addYourPlasticItemToBePublished": MessageLookupByLibrary.simpleMessage(
@@ -76,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "حدث خطأ ما، يرجى المحاولة لاحقاً"),
         "getStarted": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+        "inactive": MessageLookupByLibrary.simpleMessage("غير فعال"),
         "informationNotAvailable":
             MessageLookupByLibrary.simpleMessage("المعلومة غير متوفرة"),
         "invalidOtpValue":
@@ -91,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "multipleVinsDetectedPleaseSelectOneToPreviewVehicleData":
             MessageLookupByLibrary.simpleMessage(
                 "تم اكتشاف عدة أرقام VIN. يرجى اختيار أحدها لعرض معلومات المركبة"),
+        "myAds": MessageLookupByLibrary.simpleMessage("إعلاناتي"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "newPassword":
             MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
@@ -108,6 +113,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "oneTimePinIsRequired":
             MessageLookupByLibrary.simpleMessage("رمز التحقق مطلوب"),
         "openSettings": MessageLookupByLibrary.simpleMessage("فتح الإعدادات"),
+        "otpCode":
+            MessageLookupByLibrary.simpleMessage("رمز التعريف لمرة واحدة"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordMustBeAtLeast6Character": MessageLookupByLibrary.simpleMessage(
             "يجب أن تكون كلمة المرور 6 أحرف على الأقل"),
@@ -160,6 +167,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseSelectTheSuitableWayForYouToReachUs":
             MessageLookupByLibrary.simpleMessage(
                 "يرجى اختيار الطريقة الأنسب للتواصل معنا"),
+        "pleaseUploadAPlasticImage":
+            MessageLookupByLibrary.simpleMessage("يرجى تحميل صورة العنصر"),
         "plsReEnterOtp": MessageLookupByLibrary.simpleMessage(
             "يرجى إدخال رمز التحقق مرة أخرى"),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),

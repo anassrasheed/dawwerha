@@ -17,6 +17,7 @@ import 'package:raff/view_controllers/auth/auth_screen.dart';
 import 'package:raff/view_controllers/change_password/change_password_screen.dart';
 import 'package:raff/view_controllers/contactus/contactus_screen.dart';
 import 'package:raff/view_controllers/home/controller/home_tab_controller.dart';
+import 'package:raff/view_controllers/my_ads/my_ads_screen.dart';
 import 'package:raff/view_controllers/profile/profile_screen.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -97,6 +98,15 @@ class _MenuTabState extends State<MenuTab> {
                       title: S.of(context).profile,
                       onTap: () {
                         Get.to(() => ProfileScreen());
+                      }),
+                  Divider(
+                    height: 0,
+                  ),
+                  MenuTile(
+                      icon: Icon(Icons.list_alt_outlined,color: Colors.grey.shade600,),
+                      title: S.of(context).myAds,
+                      onTap: () {
+                        Get.to(() => MyAdsScreen());
                       }),
                   Divider(
                     height: 0,

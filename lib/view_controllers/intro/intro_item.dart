@@ -50,7 +50,7 @@ class _IntroItemState extends State<IntroItem>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Transform.scale(
-          scale: 2.5,
+          scale: 1,
           child: Lottie.network(
             widget.model.imageUrl ?? '',
             width: 100.w,

@@ -121,6 +121,7 @@ class ForgotPasswordNewScreen extends StatelessWidget {
                                   labelText: S.of(context).password,
                                   controller: _controller.passwordController,
                                   showPasswordEye: true,
+                                  textDirection: TextDirection.ltr,
                                   inputAction: TextInputAction.next,
                                   keyboardType: TextInputType.visiblePassword,
                                   onSubmitted: (c) {
@@ -139,6 +140,7 @@ class ForgotPasswordNewScreen extends StatelessWidget {
                               () => AppTextField.shared.createTextField(
                                   context: context,
                                   focusNode: _controller.confirmPasswordNode,
+                                  textDirection: TextDirection.ltr,
                                   labelText: S.of(context).confirmPassword,
                                   controller:
                                       _controller.confirmPasswordController,

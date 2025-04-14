@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
+import 'package:raff/business_managers/api_model/ads/list_ads_response.dart';
 import 'package:raff/configuration/app_colors.dart';
 import 'package:raff/configuration/current_session.dart';
 import 'package:raff/generated/l10n.dart';
@@ -13,6 +14,8 @@ import 'package:raff/view_controllers/home/controller/home_tab_controller.dart';
 import 'package:raff/view_controllers/home/model/vehicle_model.dart';
 import 'package:raff/view_controllers/scan_vinnumber/controller/scan_vinnumber_conroller.dart';
 import 'package:sizer/sizer.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -138,7 +141,7 @@ class _HomeTabState extends State<HomeTab> {
                         children: [
                           Obx(
                             () => Text(
-                              "${controller.carList.length}",
+                              "${controller.items.length}",
                               style: TextStyle(
                                   fontSize: 28,
                                   fontWeight: FontWeight.bold,
@@ -160,35 +163,6 @@ class _HomeTabState extends State<HomeTab> {
                 SizedBox(
                   height: 20,
                 ),
-                AppTextField.shared.createTextField(
-                    context: context,
-                    focusNode: controller.searchNode,
-                    labelText: S.of(context).search,
-                    labelStyle: TextStyle(
-                        fontSize: 14, color: AppColors().labelTextFieldColor),
-                    useLabelInsideField: true,
-                    controller: controller.searchController,
-                    keyboardType: TextInputType.text,
-                    borderRadius: BorderRadius.circular(21),
-                    onSubmitted: (v) {
-                      FocusManager.instance.primaryFocus!.unfocus();
-                    },
-                    onChanged: (v) {
-                      controller.getHistoryByQuery(v);
-                    },
-                    prefixIcon: Container(
-                      margin: EdgeInsets.only(right: 10),
-                      child: Transform.scale(
-                        scale: 0.4,
-                        alignment: Alignment.centerRight,
-                        child: SvgPicture.asset(
-                          'assets/ic-search.svg',
-                        ),
-                      ),
-                    )),
-                SizedBox(
-                  height: 24,
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -208,15 +182,15 @@ class _HomeTabState extends State<HomeTab> {
                     if (controller.isLoading.value)
                       return Center(
                           child: ProgressHud.shared.createLoadingView());
-                    if (controller.carList.isEmpty) {
+                    if (controller.items.isEmpty) {
                       return buildEmptyView(context);
                     }
                     return ListView.builder(
-                        itemCount: controller.carList.length,
+                        itemCount: controller.items.length,
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
-                          return _getCard(model: controller.carList[index]);
+                          return _getCard(model: controller.items[index]);
                         });
                   },
                 ),
@@ -265,47 +239,144 @@ class _HomeTabState extends State<HomeTab> {
     );
   }
 
-  Widget _getCard({required VehicleHistoryModel model}) {
-    return InkWell(
-      onTap: () {
-        ScanVinNumberController controller = Get.put(ScanVinNumberController());
-        controller.scanController.text = model.vehicleNumber;
-      },
+  Widget _getCard({required AdItem model}) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
       child: Container(
-        //,BorderSide(color: AppColors().borderColor)
-
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(color: AppColors().borderColor)),
-        margin: EdgeInsets.symmetric(vertical: 7),
+        margin: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 15),
+          padding: EdgeInsets.zero,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomText(
-                  text: model.vehicleMake +
-                      ' ' +
-                      model.vehicleModel +
-                      ' - ' +
-                      model.vehicleModelYear,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
-              SizedBox(
-                height: 16,
+              ClipRRect(
+                child: Image.asset(
+                  'assets/splash_logo.jpeg',
+                  width: 100.w,
+                  height: 125,
+                  fit: BoxFit.fill,
+                ),
+                borderRadius:
+                    BorderRadius.horizontal(right: Radius.circular(16)),
               ),
-              CustomText(
-                  text: model.vehicleNumber,
-                  fontSize: 16,
-                  fontWeight: FontWeight.normal,
-                  color: AppColors.primaryColor),
+              SizedBox(
+                width: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomText(
+                            text: S.of(context).adTitle,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        CustomText(
+                            text: model.title ?? '',
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.primaryColor),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomText(
+                            text: S.of(context).adDescription,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        CustomText(
+                            text: model.description ?? '',
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.primaryColor),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomText(
+                            text: S.of(context).adAddress,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        CustomText(
+                            text: model.address ?? '',
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.primaryColor),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Divider(
+                      thickness: 2,
+                      color: AppColors.primaryColor,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            launchDialer(model.user?.phoneNumber ?? '');
+                          },
+                          child: Icon(
+                            Icons.phone,
+                            size: 20,
+                            color: AppColors.primaryColor,
+                          ),
+                        ),
+                        CustomText(
+                            text: model.user?.fullName ?? '',
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.primaryColor),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void launchDialer(String number) async {
+    if (number.isEmpty) return;
+    final Uri phoneUri = Uri(scheme: 'tel', path: number);
+    if (await canLaunchUrl(phoneUri)) {
+      await launchUrl(phoneUri);
+    } else {
+      launchUrlString('tel://${number}');
+    }
   }
 }

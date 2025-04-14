@@ -118,5 +118,12 @@
   "plasticAds": "Plastic Ads",
   "noAdsYet": "No ads yet",
   "learnActivly": "معا لتعلم نشط في بيئة آمنة",
-  "thisAppIs": "هذه التطبيق هو عمل تطوعي من مدرسة القصور المختلطة الأولى"
+  "thisAppIs": "هذه التطبيق هو عمل تطوعي من مدرسة القصور المختلطة الأولى",
+  "myAds": "My Ads",
+  "otpCode": "OTP Code",
+  "adAddress": "Ad address:",
+  "pleaseUploadAPlasticImage": "Please upload a plastic image",
+  "adStatus": "Ad status:",
+  "active": "Active",
+  "inactive": "Inactive"
 }

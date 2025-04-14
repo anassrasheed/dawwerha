@@ -1,22 +1,16 @@
 import 'dart:convert';
 
 class ListAdsResponse {
-  final int? id;
-  final String? title;
-  final String? description;
-  final String? address;
-  final User? user;
-  final String? imageUrl;
-  final bool? active;
+  final bool? success;
+  final int? code;
+  final String? message;
+  final List<AdItem>? result;
 
   ListAdsResponse({
-    this.id,
-    this.title,
-    this.description,
-    this.address,
-    this.user,
-    this.imageUrl,
-    this.active,
+    this.success,
+    this.code,
+    this.message,
+    this.result,
   });
 
   factory ListAdsResponse.fromRawJson(String str) =>
@@ -26,6 +20,48 @@ class ListAdsResponse {
 
   factory ListAdsResponse.fromJson(Map<String, dynamic> json) =>
       ListAdsResponse(
+        success: json["success"],
+        code: json["code"],
+        message: json["message"],
+        result: json["result"] == null
+            ? []
+            : List<AdItem>.from(json["result"]!.map((x) => AdItem.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "success": success,
+        "code": code,
+        "message": message,
+        "result": result == null
+            ? []
+            : List<dynamic>.from(result!.map((x) => x.toJson())),
+      };
+}
+
+class AdItem {
+  final int? id;
+  final String? title;
+  final String? description;
+  final String? address;
+  final User? user;
+  final String? imageUrl;
+   bool? active;
+
+  AdItem({
+    this.id,
+    this.title,
+    this.description,
+    this.address,
+    this.user,
+    this.imageUrl,
+    this.active,
+  });
+
+  factory AdItem.fromRawJson(String str) => AdItem.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory AdItem.fromJson(Map<String, dynamic> json) => AdItem(
         id: json["id"],
         title: json["title"],
         description: json["description"],

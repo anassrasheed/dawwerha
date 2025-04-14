@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:raff/business_managers/api_model/ads/list_ads_response.dart';
 import 'package:raff/business_managers/api_model/force_update/force_update_model.dart';
 import 'package:raff/configuration/cache_keys.dart';
 import 'package:raff/configuration/current_session.dart';
@@ -10,6 +11,7 @@ import 'package:raff/generated/l10n.dart';
 import 'package:raff/utils/helpers/secure_storage_helper.dart';
 import 'package:raff/utils/helpers/url_helper.dart';
 import 'package:raff/utils/ui/dialog_utils.dart';
+import 'package:raff/view_controllers/ads/repository/ads_repository.dart';
 import 'package:raff/view_controllers/auth/auth_screen.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:raff/view_controllers/home/model/vehicle_model.dart';
@@ -17,12 +19,12 @@ import 'package:raff/view_controllers/home/repository/force_update_repository.da
 import 'package:raff/view_controllers/home/repository/vehicle_repository.dart';
 
 class HomeTabController extends GetxController {
-  RxList<VehicleHistoryModel> carList = <VehicleHistoryModel>[].obs;
+  RxList<AdItem> items = <AdItem>[].obs;
   TextEditingController searchController = TextEditingController();
   FocusNode searchNode = FocusNode();
   RxBool showOverlay = false.obs;
   RxBool isLoading = true.obs;
-  RxList<VehicleHistoryModel> carListOriginal = <VehicleHistoryModel>[].obs;
+  RxList<AdItem> itemsListOriginal = <AdItem>[].obs;
 
   void changeOverLay() {
     showOverlay.value = !showOverlay.value;
@@ -79,7 +81,7 @@ class HomeTabController extends GetxController {
   }
 
   void resetHistory() {
-    carList.value = [];
+    items.value = [];
     isLoading.value = true;
   }
 
@@ -106,39 +108,15 @@ class HomeTabController extends GetxController {
     }
   }
 
-  void getHistoryByQuery(String value) {
-    if (carListOriginal.isEmpty || value.trim().isEmpty) {
-      if (value.trim().isEmpty) {
-        carList.value = List.of(carListOriginal);
-      }
-      return;
-    }
-    carList.value = carListOriginal
-        .where((element) =>
-            element.vehicleNumber.toLowerCase().contains(value.toLowerCase()) ||
-            element.vehicleMake.toLowerCase().contains(value.toLowerCase()) ||
-            element.vehicleModelYear
-                .toLowerCase()
-                .contains(value.toLowerCase()) ||
-            (element.vehicleMake.toLowerCase() +
-                    ' ' +
-                    element.vehicleModel.toLowerCase() +
-                    ' - ' +
-                    element.vehicleModelYear.toLowerCase())
-                .contains(value.toLowerCase()) ||
-            element.vehicleModel.toLowerCase().contains(value.toLowerCase()))
-        .toList();
-    // if (carList.isEmpty) carList.value = List.of(carListOriginal);
-  }
-
-  void getHistoryVehicle() async {
+  void getAllAds() async {
+   await Future.delayed(Duration(seconds: 1));
     try {
-      VehicleRepository repository = ApiVehicleRepository();
-      var result = await repository.getVehicleHistory();
+      AdsRepository repository = ApiAdsRepository();
+      var result = await repository.listAds();
       isLoading.value = false;
       if (result.isRight) {
-        carList.value = result.right;
-        carListOriginal.value = List.of(carList);
+        items.value = result.right;
+        itemsListOriginal.value = List.of(items);
       }
     } catch (_) {
       isLoading.value = false;

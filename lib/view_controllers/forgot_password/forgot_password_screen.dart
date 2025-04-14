@@ -118,6 +118,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                                   controller: controller.mobileController,
                                   errorText: controller.mobileError.value,
                                   keyboardType: TextInputType.phone,
+                                  textDirection: TextDirection.ltr,
                                   hintText: '079XXXXXXX',
                                   inputAction: TextInputAction.next,
                                   onSubmitted: (v) {

@@ -25,7 +25,10 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUs": MessageLookupByLibrary.simpleMessage("About Us"),
+        "active": MessageLookupByLibrary.simpleMessage("Active"),
+        "adAddress": MessageLookupByLibrary.simpleMessage("Ad address:"),
         "adDescription": MessageLookupByLibrary.simpleMessage("Ad Description"),
+        "adStatus": MessageLookupByLibrary.simpleMessage("Ad status:"),
         "adTitle": MessageLookupByLibrary.simpleMessage("Ad Title"),
         "addItem": MessageLookupByLibrary.simpleMessage("Add item"),
         "addYourPlasticItemToBePublished": MessageLookupByLibrary.simpleMessage(
@@ -74,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Something went wrong, try again later"),
         "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "inactive": MessageLookupByLibrary.simpleMessage("Inactive"),
         "informationNotAvailable":
             MessageLookupByLibrary.simpleMessage("Information not available"),
         "invalidOtpValue":
@@ -88,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "multipleVinsDetectedPleaseSelectOneToPreviewVehicleData":
             MessageLookupByLibrary.simpleMessage(
                 "Multiple VINs detected. Please select one to view vehicle information"),
+        "myAds": MessageLookupByLibrary.simpleMessage("My Ads"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
         "newPasswordMustBeDifferentFromTheCurrentPassword":
@@ -102,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "oneTimePinIsRequired":
             MessageLookupByLibrary.simpleMessage("One Time Pin is required"),
         "openSettings": MessageLookupByLibrary.simpleMessage("Open Settings"),
+        "otpCode": MessageLookupByLibrary.simpleMessage("OTP Code"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordMustBeAtLeast6Character": MessageLookupByLibrary.simpleMessage(
             "Password must be at least 6 characters"),
@@ -153,6 +159,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseSelectTheSuitableWayForYouToReachUs":
             MessageLookupByLibrary.simpleMessage(
                 "Please select the suitable way for you to reach us"),
+        "pleaseUploadAPlasticImage": MessageLookupByLibrary.simpleMessage(
+            "Please upload a plastic image"),
         "plsReEnterOtp": MessageLookupByLibrary.simpleMessage(
             "Please enter the OTP code received again"),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),

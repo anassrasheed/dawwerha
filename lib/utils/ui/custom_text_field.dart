@@ -71,6 +71,7 @@ class AppTextField {
     String textFieldHeaderHint = '',
     ValueChanged<bool>? onSuffixChanged,
     int? maxLength,
+    TextDirection? textDirection,
   }) {
     inputFormatters ??= [];
 
@@ -124,7 +125,7 @@ class AppTextField {
                 children: [
                   Expanded(
                     child: Directionality(
-                      textDirection: (AppLocale.shared.isArabic()
+                      textDirection:textDirection?? (AppLocale.shared.isArabic()
                           ? TextDirection.rtl
                           : TextDirection.ltr),
                       child: TextFormField(
@@ -203,12 +204,7 @@ class AppTextField {
                                       },
                                       child: Container(
                                         padding: EdgeInsets.only(
-                                            right: AppLocale.shared.isArabic()
-                                                ? 0
-                                                : 6.w,
-                                            left: !AppLocale.shared.isArabic()
-                                                ? 0
-                                                : 6.w,
+                                            right: 6.w,
                                             top: 5,
                                             bottom: 5),
                                         child: obscureText

@@ -52,7 +52,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen>
       statusBarBrightness: Brightness.dark,
     ));
     _controller = PersistentTabController(initialIndex: 0);
-    controller.getHistoryVehicle();
+    controller.getAllAds();
     controller.checkForForceUpdate();
   }
 
@@ -156,7 +156,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen>
             ),
             onItemSelected: (index) {
               if (index == 0) {
-                controller.getHistoryVehicle();
+                controller.getAllAds();
               }
               setState(() {
                 _selectedIndex = index;
@@ -252,7 +252,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen>
           onPress: () async {
             changeOverlay(isForward: false);
             await pushNewScreen(context, screen: ScanVinNumberScreen());
-            controller.getHistoryVehicle();
+            controller.getAllAds();
           },
         ),
       ],
@@ -345,7 +345,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen>
                             screen: ScanVinNumberScreen(
                               vin: blocks[index],
                             )).then((value) {
-                          controller.getHistoryVehicle();
+                          controller.getAllAds();
                         });
                       },
                       child: Card(

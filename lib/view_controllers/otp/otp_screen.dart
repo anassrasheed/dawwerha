@@ -107,7 +107,7 @@ class OtpScreen extends StatelessWidget {
                                   width: 2.w,
                                 ),
                                 CustomText(
-                                  text: "OTP Code",
+                                  text: S.of(context).otpCode,
                                   color: AppColors().labelTextFieldColor,
                                   fontSize: 15,
                                 ),
@@ -117,30 +117,33 @@ class OtpScreen extends StatelessWidget {
                               height: 10,
                             ),
                             Obx(
-                              () => OTPTextField(
-                                  controller: _controller.otpController.value,
-                                  length: 5,
-                                  keyboardType: TextInputType.number,
-                                  width: MediaQuery.of(context).size.width,
-                                  fieldWidth: 12.w,
-                                  fieldStyle: FieldStyle.box,
-                                  otpFieldStyle: OtpFieldStyle(
-                                      backgroundColor: AppColors().borderColor,
-                                      borderColor: AppColors().borderColor,
-                                      disabledBorderColor:
-                                          AppColors().borderColor,
-                                      enabledBorderColor:
-                                          AppColors().borderColor,
-                                      errorBorderColor: AppColors().borderColor,
-                                      focusBorderColor:
-                                          AppColors().borderColor),
-                                  style: TextStyle(fontSize: 15),
-                                  onChanged: (pin) {
-                                    _controller.changeOtpValue(pin);
-                                  },
-                                  onCompleted: (pin) {
-                                    _controller.changeOtpValue(pin);
-                                  }),
+                              () => Directionality(
+                                textDirection: TextDirection.ltr,
+                                child: OTPTextField(
+                                    controller: _controller.otpController.value,
+                                    length: 5,
+                                    keyboardType: TextInputType.number,
+                                    width: MediaQuery.of(context).size.width,
+                                    fieldWidth: 12.w,
+                                    fieldStyle: FieldStyle.box,
+                                    otpFieldStyle: OtpFieldStyle(
+                                        backgroundColor: AppColors().borderColor,
+                                        borderColor: AppColors().borderColor,
+                                        disabledBorderColor:
+                                            AppColors().borderColor,
+                                        enabledBorderColor:
+                                            AppColors().borderColor,
+                                        errorBorderColor: AppColors().borderColor,
+                                        focusBorderColor:
+                                            AppColors().borderColor),
+                                    style: TextStyle(fontSize: 15),
+                                    onChanged: (pin) {
+                                      _controller.changeOtpValue(pin);
+                                    },
+                                    onCompleted: (pin) {
+                                      _controller.changeOtpValue(pin);
+                                    }),
+                              ),
                             ),
                             SizedBox(
                               height: 32,
@@ -210,7 +213,6 @@ class TimerView extends StatelessWidget {
                   ? AppColors().greyTextColor
                   : AppColors().highlightColor,
               fontSize: 15,
-              textDecoration: TextDecoration.underline,
             ),
           ),
         ),

@@ -118,6 +118,7 @@ class RegisterView extends StatelessWidget with AuthCommonViews {
                         controller: controller.mobileController,
                         errorText: controller.mobileError.value,
                         keyboardType: TextInputType.phone,
+                        textDirection: TextDirection.ltr,
                         hintText: '079XXXXXXX',
                         inputAction: TextInputAction.next,
                         onSubmitted: (v) {
@@ -135,6 +136,7 @@ class RegisterView extends StatelessWidget with AuthCommonViews {
                         labelText: S.of(context).password,
                         controller: controller.passwordController,
                         errorText: controller.passwordError.value,
+                        textDirection: TextDirection.ltr,
                         inputAction: TextInputAction.next,
                         onSubmitted: (v) {
                           FocusManager.instance.primaryFocus!.unfocus();

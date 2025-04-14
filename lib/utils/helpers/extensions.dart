@@ -1,13 +1,15 @@
+import 'package:get/get.dart';
+
 extension stringExtension on String {
   bool convertToBoolean() {
     return this.toLowerCase() == 'true';
   }
 
   String getFirstName() {
-    if (this.split(' ').isNotEmpty) {
-      return this.split(' ').first;
+    if (this.trim().split(' ').isNotEmpty) {
+      return this.trim().split(' ').first;
     }
-    return this;
+    return this.trim();
   }
 
   String generateValidMobileNumber() {

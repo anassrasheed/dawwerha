@@ -100,6 +100,7 @@ class LoginView extends StatelessWidget with AuthCommonViews {
                         controller: controller.mobileController,
                         errorText: controller.mobileError.value,
                         hintText: '079XXXXXXX',
+                        textDirection: TextDirection.ltr,
                         keyboardType: TextInputType.phone,
                         inputAction: TextInputAction.next,
                         onSubmitted: (v) {
@@ -116,6 +117,7 @@ class LoginView extends StatelessWidget with AuthCommonViews {
                         focusNode: controller.passwordNode,
                         labelText: S.of(context).password,
                         inputFormatters: [],
+                        textDirection: TextDirection.ltr,
                         errorText: controller.passwordError.value,
                         controller: controller.passwordController,
                         inputAction: TextInputAction.done,
