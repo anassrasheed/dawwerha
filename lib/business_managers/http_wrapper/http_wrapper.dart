@@ -514,7 +514,7 @@ class HttpWrapper {
     } else {
       apiResponse.statusCode = response.statusCode;
       apiResponse.body = response.bodyBytes;
-      apiResponse.stringBody = response.body;
+      apiResponse.stringBody = utf8.decode(response.bodyBytes);
 
       return apiResponse;
     }

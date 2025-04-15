@@ -129,7 +129,9 @@ class AppTextField {
                           ? TextDirection.rtl
                           : TextDirection.ltr),
                       child: TextFormField(
+
                         enableInteractiveSelection: enableInteractiveSelection,
+                        textDirection: textDirection?? TextDirection.rtl,
                         textCapitalization: textCapitalization,
                         autocorrect: autocorrect,
                         key: key,
@@ -244,6 +246,7 @@ class AppTextField {
                             onEditingComplete();
                           }
                         },
+
                       ),
                     ),
                   ),

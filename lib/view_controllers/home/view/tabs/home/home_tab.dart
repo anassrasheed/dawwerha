@@ -245,7 +245,7 @@ class _HomeTabState extends State<HomeTab> {
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppColors().borderColor,width: 2 )),
+            border: Border.all(color: AppColors().borderColor, width: 2)),
         margin: EdgeInsets.symmetric(vertical: 12, horizontal: 0),
         child: Padding(
           padding: EdgeInsets.zero,
