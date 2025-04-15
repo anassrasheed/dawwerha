@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addYourPlasticItemToBePublished": MessageLookupByLibrary.simpleMessage(
             "Add your plastic item to be published"),
         "address": MessageLookupByLibrary.simpleMessage("Address"),
+        "areYouSureYouWantToDeleteThisAd": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this ad?"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "callUs": MessageLookupByLibrary.simpleMessage("Call Us"),
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
@@ -213,6 +215,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "You created an account successfully! 🎉"),
         "yourAdsHasAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Your Ads has added successfully"),
+        "yourItemHasDeletedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Your item has deleted successfully"),
         "yourPasswordChangedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Your Password Was Changed Successfully"),
         "yourPasswordResetSuccessfully": MessageLookupByLibrary.simpleMessage(

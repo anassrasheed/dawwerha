@@ -125,5 +125,7 @@
   "pleaseUploadAPlasticImage": "يرجى تحميل صورة العنصر",
   "adStatus": "حالة الإعلان:",
   "active": "فعال",
-  "inactive": "غير فعال"
+  "inactive": "غير فعال",
+  "yourItemHasDeletedSuccessfully": "لقد تم حذف العنصر الخاص بك بنجاح",
+  "areYouSureYouWantToDeleteThisAd": "هل أنت متأكد أنك تريد حذف هذا الإعلان؟"
 }

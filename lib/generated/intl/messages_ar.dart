@@ -35,6 +35,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addYourPlasticItemToBePublished": MessageLookupByLibrary.simpleMessage(
             "أضف منتجك البلاستيكي المراد نشره"),
         "address": MessageLookupByLibrary.simpleMessage("تفاصيل العنوان"),
+        "areYouSureYouWantToDeleteThisAd": MessageLookupByLibrary.simpleMessage(
+            "هل أنت متأكد أنك تريد حذف هذا الإعلان؟"),
         "back": MessageLookupByLibrary.simpleMessage("عودة"),
         "callUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
         "camera": MessageLookupByLibrary.simpleMessage("الكاميرا"),
@@ -222,6 +224,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم إنشاء الحساب بنجاح! 🎉"),
         "yourAdsHasAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "لقد تمت إضافة إعلاناتك بنجاح"),
+        "yourItemHasDeletedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "لقد تم حذف العنصر الخاص بك بنجاح"),
         "yourPasswordChangedSuccessfully":
             MessageLookupByLibrary.simpleMessage("تم تغيير كلمة المرور بنجاح"),
         "yourPasswordResetSuccessfully": MessageLookupByLibrary.simpleMessage(

@@ -19,6 +19,8 @@ class Apis {
   static final String scanHistory = baseUrl + 'users/get-user-search-history';
   static final String forceUpdate = baseUrl + 'setting-config/app-version-info';
   static final String addAds = baseUrl + 'wares/create';
-  static final String listAllWares = baseUrl + 'others-wares';
-  static final String listMyWares = baseUrl + 'my-wares';
+  static final String listAllWares = baseUrl + 'wares/others-wares';
+  static final String listMyWares = baseUrl + 'wares/my-wares';
+  static final String deleteWare = baseUrl + 'wares';
+  static final String changeWareStatus = baseUrl + 'wares/toggle-active-flag';
 }

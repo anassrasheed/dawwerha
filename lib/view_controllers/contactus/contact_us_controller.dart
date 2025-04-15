@@ -90,8 +90,8 @@ class ContactUsController extends GetxController {
       scheme: 'mailto',
       path: contactInfo.value!.email,
       queryParameters: {
-        'subject': 'VINSweep',
-        'body': "Hello VinSweep",
+        'subject': 'مرحبا دورها',
+        'body': "",
       },
     );
 

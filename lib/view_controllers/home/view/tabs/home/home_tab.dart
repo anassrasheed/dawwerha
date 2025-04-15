@@ -8,11 +8,9 @@ import 'package:raff/configuration/current_session.dart';
 import 'package:raff/generated/l10n.dart';
 import 'package:raff/utils/helpers/extensions.dart';
 import 'package:raff/utils/ui/custom_text.dart';
-import 'package:raff/utils/ui/custom_text_field.dart';
 import 'package:raff/utils/ui/progress_hud.dart';
 import 'package:raff/view_controllers/home/controller/home_tab_controller.dart';
-import 'package:raff/view_controllers/home/model/vehicle_model.dart';
-import 'package:raff/view_controllers/scan_vinnumber/controller/scan_vinnumber_conroller.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -188,6 +186,7 @@ class _HomeTabState extends State<HomeTab> {
                     return ListView.builder(
                         itemCount: controller.items.length,
                         shrinkWrap: true,
+                        padding: EdgeInsets.zero,
                         physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return _getCard(model: controller.items[index]);
@@ -246,21 +245,49 @@ class _HomeTabState extends State<HomeTab> {
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppColors().borderColor)),
-        margin: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+            border: Border.all(color: AppColors().borderColor,width: 2 )),
+        margin: EdgeInsets.symmetric(vertical: 12, horizontal: 0),
         child: Padding(
           padding: EdgeInsets.zero,
           child: Column(
             children: [
-              ClipRRect(
-                child: Image.asset(
-                  'assets/splash_logo.jpeg',
+              CachedNetworkImage(
+                imageUrl: model.imageUrl ?? '',
+                httpHeaders: {
+                  'Authorization':
+                      '${CurrentSession().getUser()!.tokenType?.trim() ?? 'Bearer'} ${CurrentSession().getUser()!.accessToken!}'
+                },
+                placeholder: (context, url) =>
+                    ProgressHud.shared.createLoadingView(),
+                errorWidget: (context, url, error) {
+                  return Container(
+                    width: 100.w,
+                    height: 125,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: Colors.grey.shade300,
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.error,
+                        color: AppColors.primaryColor,
+                        size: 25,
+                      ),
+                    ),
+                  );
+                },
+                imageBuilder: (context, imageProvider) => Container(
                   width: 100.w,
                   height: 125,
-                  fit: BoxFit.fill,
+                  decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(16)),
+                    image: DecorationImage(
+                      image: imageProvider,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                 ),
-                borderRadius:
-                    BorderRadius.horizontal(right: Radius.circular(16)),
               ),
               SizedBox(
                 width: 10,

@@ -360,7 +360,7 @@ class HttpWrapper {
           .delete(
         Uri.parse(this.url!),
         headers: this.headers,
-        body: this.postParameters,
+        body: json.encode(this.postParameters),
         encoding: utf8,
       )
           .timeout(defaultTimeout, onTimeout: () {

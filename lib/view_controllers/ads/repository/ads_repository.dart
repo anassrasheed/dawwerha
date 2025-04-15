@@ -14,6 +14,12 @@ abstract class AdsRepository {
       String title, String desc, String address, String img,
       {bool showLoading = true});
 
+  Future<Either<Failure, GenericResponse>> deleteAds(
+      {bool showLoading = false, required int wareId});
+
+  Future<Either<Failure, AdItem>> changeAdStatus(
+      {bool showLoading = true, required int wareId});
+
   Future<Either<Failure, List<AdItem>>> listAds({bool showLoading = true});
 
   Future<Either<Failure, List<AdItem>>> listOwnedAds(
@@ -81,6 +87,50 @@ class ApiAdsRepository extends AdsRepository {
       if (body['code'] == 200) {
         ListAdsResponse response = ListAdsResponse.fromJson(body);
         return Right(response.result ?? []);
+      } else {
+        return Left(Failure(message: body['message']));
+      }
+    }
+    return Left(Failure(message: S.of(Get.context!).generalError));
+  }
+
+  @override
+  Future<Either<Failure, AdItem>> changeAdStatus(
+      {bool showLoading = true, required int wareId}) async {
+    var result = await HttpWrapper(
+        context: Get.context!,
+        url: Apis.changeWareStatus,
+        showLoading: showLoading,
+        postParameters: {
+          "wareId": wareId
+        }).post();
+    if (result?.stringBody != null) {
+      var body = json.decode(result!.stringBody!);
+      if (body['code'] == 200) {
+        ListAdsResponse response = ListAdsResponse.fromItemJson(body);
+        return Right(response.item!);
+      } else {
+        return Left(Failure(message: body['message']));
+      }
+    }
+    return Left(Failure(message: S.of(Get.context!).generalError));
+  }
+
+  @override
+  Future<Either<Failure, GenericResponse>> deleteAds(
+      {bool showLoading = false, required int wareId})async {
+    var result = await HttpWrapper(
+        context: Get.context!,
+        url: Apis.deleteWare,
+        showLoading: showLoading,
+        postParameters: {
+          "wareId": wareId
+        }).delete();
+    if (result?.stringBody != null) {
+      var body = json.decode(result!.stringBody!);
+      if (body['code'] == 200) {
+        GenericResponse response = GenericResponse.fromJson(body);
+        return Right(response);
       } else {
         return Left(Failure(message: body['message']));
       }

@@ -5,11 +5,12 @@ class ListAdsResponse {
   final int? code;
   final String? message;
   final List<AdItem>? result;
-
+  final AdItem? item;
   ListAdsResponse({
     this.success,
     this.code,
     this.message,
+    this.item,
     this.result,
   });
 
@@ -26,6 +27,15 @@ class ListAdsResponse {
         result: json["result"] == null
             ? []
             : List<AdItem>.from(json["result"]!.map((x) => AdItem.fromJson(x))),
+      );
+  factory ListAdsResponse.fromItemJson(Map<String, dynamic> json) =>
+      ListAdsResponse(
+        success: json["success"],
+        code: json["code"],
+        message: json["message"],
+        item: json["result"] == null
+            ? null
+            : AdItem.fromJson(json["result"]),
       );
 
   Map<String, dynamic> toJson() => {

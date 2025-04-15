@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:raff/business_managers/api_model/ads/list_ads_response.dart';
 import 'package:raff/configuration/app_colors.dart';
+import 'package:raff/configuration/current_session.dart';
 import 'package:raff/utils/ui/dialog_utils.dart';
 import 'package:raff/utils/ui/progress_hud.dart';
 import 'package:raff/view_controllers/my_ads/my_ads_controller.dart';
@@ -84,13 +86,28 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
                       if (controller.items.isEmpty) {
                         return buildEmptyView(context);
                       }
-                      return ListView.builder(
-                          itemCount: controller.items.length,
-                          shrinkWrap: true,
-                          physics: AlwaysScrollableScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return _getCard(model: controller.items[index]);
-                          });
+                      return Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(50))),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Expanded(
+                              child: ListView.builder(
+                                  itemCount: controller.items.length,
+                                  shrinkWrap: true,
+                                  physics: AlwaysScrollableScrollPhysics(),
+                                  itemBuilder: (context, index) {
+                                    return _getCard(
+                                        model: controller.items[index]);
+                                  }),
+                            ),
+                          ],
+                        ),
+                      );
                     },
                   ),
                 ),
@@ -109,7 +126,7 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppColors().borderColor)),
+            border: Border.all(color: AppColors().borderColor, width: 2)),
         margin: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
         child: Stack(
           children: [
@@ -117,15 +134,43 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
               padding: EdgeInsets.zero,
               child: Column(
                 children: [
-                  ClipRRect(
-                    child: Image.asset(
-                      'assets/splash_logo.jpeg',
+                  CachedNetworkImage(
+                    imageUrl: model.imageUrl ?? '',
+                    httpHeaders: {
+                      'Authorization':
+                          '${CurrentSession().getUser()!.tokenType?.trim() ?? 'Bearer'} ${CurrentSession().getUser()!.accessToken!}'
+                    },
+                    placeholder: (context, url) =>
+                        ProgressHud.shared.createLoadingView(),
+                    errorWidget: (context, url, error) {
+                      return Container(
+                        width: 100.w,
+                        height: 125,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: Colors.grey.shade300,
+                        ),
+                        child: Center(
+                          child: Icon(
+                            Icons.error,
+                            color: AppColors.primaryColor,
+                            size: 25,
+                          ),
+                        ),
+                      );
+                    },
+                    imageBuilder: (context, imageProvider) => Container(
                       width: 100.w,
                       height: 125,
-                      fit: BoxFit.fill,
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(16)),
+                        image: DecorationImage(
+                          image: imageProvider,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
                     ),
-                    borderRadius:
-                        BorderRadius.horizontal(right: Radius.circular(16)),
                   ),
                   SizedBox(
                     width: 10,
@@ -209,7 +254,9 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
                             Container(
                               margin: EdgeInsets.symmetric(horizontal: 5),
                               child: CustomText(
-                                  text: model.active! ? S.of(context).active : S.of(context).inactive,
+                                  text: model.active!
+                                      ? S.of(context).active
+                                      : S.of(context).inactive,
                                   fontSize: 15,
                                   height: 1.6,
                                   fontWeight: FontWeight.normal,
@@ -230,18 +277,24 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
             ),
             Align(
               alignment: Alignment.topLeft,
-              child: InkWell(
-                onTap: () {
-                  DialogUtils.showDialogWithButtons(
-                      title: S.of(context).warning,
-                      message: 'Are you sure you want to delete this ad?',
-                      positiveButtonTitle: S.of(context).confirm,
-                      negativeButtonTitle: S.of(context).cancel,
-                      context: context);
-                },
-                child: Icon(
-                  Icons.delete_outline,
-                  color: Colors.red,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: InkWell(
+                  onTap: () {
+                    DialogUtils.showDialogWithButtons(
+                        title: S.of(context).warning,
+                        message: S.of(context).areYouSureYouWantToDeleteThisAd,
+                        onTap: () {
+                          controller.deleteMyAds(model.id ?? 0);
+                        },
+                        positiveButtonTitle: S.of(context).confirm,
+                        negativeButtonTitle: S.of(context).cancel,
+                        context: context);
+                  },
+                  child: Icon(
+                    Icons.delete_outline,
+                    color: Colors.red,
+                  ),
                 ),
               ),
             ),
@@ -294,6 +347,7 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
               setState(() {
                 item.active = value;
               });
+              controller.changeAdStatus(item.id ?? 0);
             }),
       );
 }

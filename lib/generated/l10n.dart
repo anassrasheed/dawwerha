@@ -1319,6 +1319,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Your item has deleted successfully`
+  String get yourItemHasDeletedSuccessfully {
+    return Intl.message(
+      'Your item has deleted successfully',
+      name: 'yourItemHasDeletedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this ad?`
+  String get areYouSureYouWantToDeleteThisAd {
+    return Intl.message(
+      'Are you sure you want to delete this ad?',
+      name: 'areYouSureYouWantToDeleteThisAd',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -125,5 +125,7 @@
   "pleaseUploadAPlasticImage": "Please upload a plastic image",
   "adStatus": "Ad status:",
   "active": "Active",
-  "inactive": "Inactive"
+  "inactive": "Inactive",
+  "yourItemHasDeletedSuccessfully": "Your item has deleted successfully",
+  "areYouSureYouWantToDeleteThisAd": "Are you sure you want to delete this ad?"
 }
