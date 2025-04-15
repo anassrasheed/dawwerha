@@ -70,10 +70,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterOtp": MessageLookupByLibrary.simpleMessage("أدخل رمز التحقق"),
         "enterTheOtpCodeSentToTheRegisteredEmailAddress":
             MessageLookupByLibrary.simpleMessage(
-                "أدخل رمز التحقق المرسل إلى البريد الإلكتروني المسجل"),
+                "أدخل رمز التحقق المرسل إلى هاتفك المحمول"),
         "enterTheOtpCodeSentToYourEmailAddress":
             MessageLookupByLibrary.simpleMessage(
-                "أدخل رمز التحقق المرسل إلى بريدك الإلكتروني"),
+                "أدخل رمز التحقق المرسل إلى هاتفك المحمول"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
         "gallery": MessageLookupByLibrary.simpleMessage("المعرض"),
